@@ -6,7 +6,7 @@ class Profiles extends Component {
     constructor(){
     	super()  //I FORGOT THE MOST IMPORTANT THING
     	this.state = {
-    		profile: []
+    		profiles: []
     	}
     }
 
@@ -17,17 +17,17 @@ class Profiles extends Component {
          		return
          	}
 
-            console.log(JSON.stringify(response))
+            // console.log(JSON.stringify(response))
             var results = response.results
             this.setState({
-            	profile: response.results  //profile: response
+            	profiles: results  //profile: response
             })
 
          })
     }
 
 	render(){
-        var list = this.state.profile.map((profile, i) => {
+        var list = this.state.profiles.map((profile, i) => {
         	return (
                 <li key={profile.id}>{profile.email}</li>
         	)

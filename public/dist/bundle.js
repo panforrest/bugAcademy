@@ -22145,7 +22145,7 @@ var Profiles = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Profiles.__proto__ || Object.getPrototypeOf(Profiles)).call(this));
 
     _this.state = {
-      profile: []
+      profiles: []
     };
     return _this;
   }
@@ -22161,17 +22161,17 @@ var Profiles = function (_Component) {
           return;
         }
 
-        console.log(JSON.stringify(response));
+        // console.log(JSON.stringify(response))
         var results = response.results;
         _this2.setState({
-          profile: response.results //profile: response
+          profiles: results //profile: response
         });
       });
     }
   }, {
     key: 'render',
     value: function render() {
-      var list = this.state.profile.map(function (profile, i) {
+      var list = this.state.profiles.map(function (profile, i) {
         return _react2.default.createElement(
           'li',
           { key: profile.id },
@@ -22206,15 +22206,20 @@ exports.default = Profiles;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Profiles = undefined;
+exports.Signup = exports.Profiles = undefined;
 
 var _Profiles = __webpack_require__(183);
 
 var _Profiles2 = _interopRequireDefault(_Profiles);
 
+var _Signup = __webpack_require__(196);
+
+var _Signup2 = _interopRequireDefault(_Signup);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Profiles = _Profiles2.default;
+exports.Signup = _Signup2.default;
 
 /***/ }),
 /* 185 */
@@ -22264,7 +22269,6 @@ var Home = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'col-md-3' },
-                        'Left',
                         _react2.default.createElement(_containers.Profiles, null)
                     ),
                     _react2.default.createElement(
@@ -22275,7 +22279,7 @@ var Home = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'col-md-3' },
-                        'Right'
+                        _react2.default.createElement(_containers.Signup, null)
                     )
                 )
             );
@@ -22295,8 +22299,10 @@ exports.default = Home;
 
 
 Object.defineProperty(exports, "__esModule", {
-				value: true
+    value: true
 });
+
+var _get$get$post;
 
 var _superagent = __webpack_require__(190);
 
@@ -22304,23 +22310,51 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-				get: function get(endpoint, params, callback) {
-								_superagent2.default.get(endpoint).query(null).set('Accept', 'application/json' //.set('accepte', 'app/json')
-								).end(function (err, response) {
-												//.result((err, result)=>{
-												if (err) {
-																// var err = err.message || err
-																callback(err, null //alert(err)
-																);return;
-												}
+exports.default = (_get$get$post = {
 
-												callback(null, response.body //console.log(JSON.stringify(response.body))
-												);
-								});
-				}
-};
+    get: function get(endpoint, params, callback) {
+        _superagent2.default.get(endpoint).query(null).set('Accept', 'application/json' //.set('accepte', 'app/json')
+        ).end(function (err, response) {
+            //.result((err, result)=>{
+            if (err) {
+                // var err = err.message || err
+                callback(err, null //alert(err)
+                );return;
+            }
+
+            callback(null, response.body //console.log(JSON.stringify(response.body))
+            );
+        });
+    }
+
+}, _defineProperty(_get$get$post, 'get', function get(endpoint, params, callback) {
+    _superagent2.default.get(endpoint).query(null).set('Accept', 'application/json' //.set('accepte', 'app/json')
+    ).end(function (err, response) {
+        //.result((err, result)=>{
+        if (err) {
+            // var err = err.message || err
+            callback(err, null //alert(err)
+            );return;
+        }
+
+        callback(null, response.body //console.log(JSON.stringify(response.body))
+        );
+    });
+}), _defineProperty(_get$get$post, 'post', function post(endpoint, params, callback) {
+    _superagent2.default.post(endpoint //.get(endpoint)
+    ).send(params //.query(params)
+    ).set('Accept', 'application/json').end(function (err, response) {
+        if (err) {
+            callback(err, null);
+            return;
+        }
+
+        callback(null, response.body //callback(null, response.result)
+        );
+    });
+}), _get$get$post);
 
 /***/ }),
 /* 187 */
@@ -24339,6 +24373,116 @@ exports.cleanHeader = function (header, shouldStripCookie) {
   }
   return header;
 };
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(32);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _utils = __webpack_require__(187);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//import { APIManager } from '../../utils/APIManager'
+
+var Signup = function (_Component) {
+  _inherits(Signup, _Component);
+
+  function Signup() {
+    _classCallCheck(this, Signup);
+
+    var _this = _possibleConstructorReturn(this, (Signup.__proto__ || Object.getPrototypeOf(Signup)).call(this));
+
+    _this.state = {
+      visitor: {
+        email: '',
+        firstName: '',
+        lastName: '',
+        password: ''
+      }
+    };
+    return _this;
+  }
+
+  _createClass(Signup, [{
+    key: 'update',
+    value: function update(event) {
+      // console.log('updateProfile: ')
+      event.preventDefault
+      // console.log(event.target.id+' == '+JSON.stringify(event.target.value))    //FORGOT target
+      ();var updated = Object.assign({}, this.state.visitor //var updated = Object.assign({}, this.state)//[]
+      );updated[event.target.id] = event.target.value;
+      this.setState({
+        visitor: updated
+      });
+      console.log(JSON.stringify(this.state.visitor));
+    }
+  }, {
+    key: 'register',
+    value: function register(event) {
+      event.preventDefault
+      // console.log('register: ')
+      ();_utils.APIManager.post('/api/profile', this.state.visitor, function (err, response) {
+        if (err) {
+          var msg = err.message || err;
+          alert(msg);
+          return;
+        }
+
+        console.log('register: ' + JSON.stringify(response) //console.log(JSON.stringify(response.result))
+        );
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Sign up'
+        ),
+        _react2.default.createElement('input', { onChange: this.update.bind(this), type: 'text', id: 'email', placeholder: 'Email' }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('input', { onChange: this.update.bind(this), type: 'text', id: 'firstName', placeholder: 'First Name' }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('input', { onChange: this.update.bind(this), type: 'text', id: 'lastName', placeholder: 'Last Name' }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('input', { onChange: this.update.bind(this), type: 'text', id: 'password', placeholder: 'Password' }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.register.bind(this) },
+          'Submit'
+        )
+      );
+    }
+  }]);
+
+  return Signup;
+}(_react.Component);
+
+exports.default = Signup;
 
 /***/ })
 /******/ ]);
