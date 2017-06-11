@@ -1,6 +1,8 @@
                 // <li key=profile.id>profile.email</li>
 import React, { Component } from 'react'
 import { APIManager } from '../../utils'
+import actions from '../../actions'
+import { connect } from 'react-redux'
 
 class Profiles extends Component {
     constructor(){
@@ -17,11 +19,12 @@ class Profiles extends Component {
          		return
          	}
 
-            // console.log(JSON.stringify(response))
+            console.log(JSON.stringify(response))
             var results = response.results
-            this.setState({
-            	profiles: results  //profile: response
-            })
+            // this.setState({
+            // 	profiles: results  //profile: response
+            // })
+            this.props.profilesReceived(results)  //this.props.profileReceived(response)
 
          })
     }
@@ -43,4 +46,17 @@ class Profiles extends Component {
 	}
 } 
 
-export default Profiles
+const stateToProps = (state) => {  //const stateToProps (state) => {
+    return {
+        profile: state.profile.list   //NOT SURE WHY? list: profile.profiles
+    }
+}
+
+const dispatchToProps = (dispatch) => {  //constat dispatchToProps (dispatch) => {
+    return {
+        //profileReceived: (profiles) => this.props.actions.profileReceived(profiles)
+        profilesReceived: (profiles) => dispatch(actions.profilesReceived(profiles))
+    }
+}
+
+export default connect(stateToProps, dispatchToProps)(Profiles)
