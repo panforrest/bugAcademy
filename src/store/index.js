@@ -1,30 +1,30 @@
-import { createStore, combineReducers, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
 import { profileReducer } from '../reducers'
+import { applyMiddleware, createStore, combineReducers } from 'redux'  //'react-redux'
+import thunk from 'redux-thunk'   //{ thunk }
 
 var store;
 
 export default {
-// configureStore
-// combineReducer
 
-    configureStore: () => {
-    	
-    	const reducers = combineReducers({
-    		profile: profileReducer   // profileReducer, THIS CAUSES THE PROBLEM: cannot read the list of undefined
-    	}),
+    configureStore: () => {  //configureStore = () => {
+ 
+	    const reducers = combineReducers({
 
-    	store = createStore(
-    		reducers,
-    		applyMiddleware()
-    	)
+	    	profile: profileReducer
 
+	    }),
 
-    	return store
-    },
+	    store = createStore(
+
+	        reducers,
+	    	applyMiddleware()  //applyMiddleware(thunk)
+
+	    ) 
+
+        return store
+    }, 
 
     currentStore: () => {
-    	return store
+        return store
     }
-
 }

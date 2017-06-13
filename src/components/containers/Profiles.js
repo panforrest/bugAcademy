@@ -30,7 +30,7 @@ class Profiles extends Component {
     }
 
 	render(){
-        var list = this.state.profiles.map((profile, i) => {
+        var list = this.props.profiles.map((profile, i) => {
         	return (
                 <li key={profile.id}>{profile.email}</li>
         	)
@@ -48,7 +48,7 @@ class Profiles extends Component {
 
 const stateToProps = (state) => {  //const stateToProps (state) => {
     return {
-        profile: state.profile.list   //NOT SURE WHY? list: profile.profiles
+        profiles: state.profile.list   //NOT SURE WHY? list: profile.profiles
     }
 }
 
