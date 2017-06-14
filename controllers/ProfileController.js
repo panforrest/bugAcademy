@@ -1,6 +1,7 @@
 var Profile = require('../models/Profile')
 var Promise = require('bluebird')
 var bcrypt = require('bcryptjs')
+var jwt = require('jsonwebtoken')
 
 module.exports = {
 
@@ -34,6 +35,8 @@ module.exports = {
             passwordHashed = bcrypt.hashSync(password, 10)
             params['password'] = passwordHashed    //params[password]
 
+            // var token = jwt.sign()
+
     		Profile.create(params, function(err, profile){
                 if (err) {
                 	reject(err)
@@ -48,7 +51,7 @@ module.exports = {
     	})
     },
 
-    findById: function(id, isRaw){     //params NOT id
+    findById: function(id){     //params NOT id
     	return new Promise(function(resolve, reject){
 	    	Profile.findById(id, function(err, profile){  //params NOT id
 	    		if (err) {
@@ -56,10 +59,10 @@ module.exports = {
 	    			return 
 	    		}
 
-	    		if (isRaw == true){
-	    			resolve(profile)
-	    			return
-	    		}
+	    		// if (isRaw == true){
+	    		// 	resolve(profile)
+	    		// 	return
+	    		// }
 
 	            resolve(profile.summary())
 	    	})	

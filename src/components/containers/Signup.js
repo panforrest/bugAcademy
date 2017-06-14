@@ -31,16 +31,17 @@ class Signup extends Component {
 	register(event){
 		event.preventDefault()
         // console.log('register: ')
-        APIManager.post('/api/profile', this.state.visitor, (err, response) => {
+        // APIManager.post('/api/profile', this.state.visitor, (err, response) => {
+        APIManager.post('/account/register', this.state.visitor, (err, response) => {
             if (err) {
             	const msg = err.message || err
                 alert(msg)
             	return
             }
 
-            console.log('register: '+JSON.stringify(response))//console.log(JSON.stringify(response.result))
-            var result = response.result
-            this.props.profileCreated(result)//this.state.profileCreated(result)
+            console.log('register: '+JSON.stringify(response))
+            var result = response.profile  //var result = response.result
+            this.props.profileCreated(result)
         })
 	}
 
