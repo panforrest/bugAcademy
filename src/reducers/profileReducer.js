@@ -2,7 +2,7 @@ import constants from '../constants'
 
 var initialState = {
 	list: [],  //profiles: []
-	//user: {}
+	// user: {}
 }
 
 export default (state=initialState, action) => {  //export default (state=initialState, actions){

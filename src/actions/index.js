@@ -13,5 +13,12 @@ export default {
     		type: constants.PROFILE_CREATED,
     		profile: profile
     	}
+    },
+
+    currentUserReceived: (profile) => {
+        return {
+            type: constants.CURRENT_USER_RECEIVED,
+            profile: profile
+        }
     }
 }
