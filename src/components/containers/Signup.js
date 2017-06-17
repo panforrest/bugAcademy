@@ -46,19 +46,19 @@ class Signup extends Component {
 	}
 
     login(event){
-        event.preventDefault()
-        APIManager.post('/account/login', this.state.visitor, (err, response) => {
-            if (err) {
-                const msg = err.message || err
-                // console.log(msg)
-                alert(msg)
-                return
-            }
+    //     event.preventDefault()
+    //     APIManager.post('/account/login', this.state.visitor, (err, response) => {
+    //         if (err) {
+    //             const msg = err.message || err
+    //             // console.log(msg)
+    //             alert(msg)
+    //             return
+    //         }
 
-            console.log(JSON.stringify(response))
-            var result = response.profile
-            this.props.currentUserReceived(result)
-        })
+    //         console.log(JSON.stringify(response))
+    //         var result = response.profile
+    //         this.props.currentUserReceived(result)
+    //     })
     }
 
 	render(){
