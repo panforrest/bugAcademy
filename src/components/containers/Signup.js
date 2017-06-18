@@ -1,3 +1,4 @@
+                // {(this.props.currentUser != null) ? <h2>Welcome, {this.props.currentUser.email}</h2> : 
 import React, { Component } from 'react' 
 import { APIManager } from '../../utils'  //import { APIManager } from '../../utils/APIManager'
 import actions from '../../actions'
@@ -46,26 +47,25 @@ class Signup extends Component {
 	}
 
     login(event){
-    //     event.preventDefault()
-    //     APIManager.post('/account/login', this.state.visitor, (err, response) => {
-    //         if (err) {
-    //             const msg = err.message || err
-    //             // console.log(msg)
-    //             alert(msg)
-    //             return
-    //         }
+        event.preventDefault()
+        APIManager.post('/account/login', this.state.visitor, (err, response) => {
+            if (err) {
+                const msg = err.message || err
+                // console.log(msg)
+                alert(msg)
+                return
+            }
 
-    //         console.log(JSON.stringify(response))
-    //         var result = response.profile
-    //         this.props.currentUserReceived(result)
-    //     })
+            console.log(JSON.stringify(response))
+            var result = response.profile
+            this.props.currentUserReceived(result)
+        })
     }
 
 	render(){
 		return(
 			<div>
-                {(this.props.currentUser != null) ? <h2>Welcome, {this.props.currentUser.email}</h2> : 
-
+                {(this.props.currentUser != null) ? <h2> Welcome, { this.props.currentUser.email } </h2> :  
 
                 <div>
     			    <h2>Sign up</h2>

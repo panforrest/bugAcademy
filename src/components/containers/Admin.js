@@ -1,6 +1,9 @@
+                    // <h2>User is not logged in. </h2>
+                    // export default connect(stateToProps, dispatchToProps)(Admin)
 import React, { Component } from 'react'
 import actions from '../../actions'
 import { connect } from 'react-redux'
+import Signup from './Signup'
 
 class Admin extends Component {
 
@@ -25,7 +28,7 @@ class Admin extends Component {
     		<div>
                 {(this.props.currentUser != null) ? <h2>Welcome, {this.props.currentUser.email}</h2> : 
 
-                    <h2>User is not logged in. </h2>
+                    <Signup />
 
                 }   
     		</div>
@@ -43,8 +46,9 @@ const stateToProps = (state) => {
 const dispatchToProps = (dispatch) => {
     return {
         profileCreated: (profile) => dispatch(actions.profileCreated(profile)),
+        //profilesReceived: (profiles) => disptach(actions.profilesReceived(profiles)),
         currentUserReceived: (profile) => dispatch(actions.currentUserReceived(profile))
     }
 }
 
-export default connect(stateToProps, dispatchToProps)(Admin)
+export default Admin
