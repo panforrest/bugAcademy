@@ -4,24 +4,22 @@ import React, { Component } from 'react'
 import actions from '../../actions'
 import { connect } from 'react-redux'
 import Signup from './Signup'
+import { APIManager } from '../../utils' 
 
 class Admin extends Component {
 
-    // login(event){
-    //     event.preventDefault()
-    //     APIManager.post('/account/login', this.state.visitor, (err, response) => {
-    //         if (err) {
-    //             const msg = err.message || err
-    //             // console.log(msg)
-    //             alert(msg)
-    //             return
-    //         }
-
-    //         console.log(JSON.stringify(response))
-    //         var result = response.profile
-    //         this.props.currentUserReceived(result)
-    //     })
-    // }
+    componentDidMount(){
+        // console.log('componentDidMount: ')
+        APIManager.get('/account/currentuser', null, (err, response) => {
+            if (err) {
+                const msg = err.message || err
+                alert(msg)
+                return
+            }
+            console.log('Admin.js: ', JSON.stringify(response.profile))
+            this.props.currentUserReceived(response.profile)
+        })
+    }
 
     render(){
     	return(
@@ -51,4 +49,4 @@ const dispatchToProps = (dispatch) => {
     }
 }
 
-export default Admin
+export default connect(stateToProps, dispatchToProps)(Admin)
