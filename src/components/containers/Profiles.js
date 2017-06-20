@@ -19,7 +19,7 @@ class Profiles extends Component {
          		return
          	}
 
-            console.log(JSON.stringify(response))
+            // console.log(JSON.stringify(response))
             var results = response.results
             // this.setState({
             // 	profiles: results  //profile: response
