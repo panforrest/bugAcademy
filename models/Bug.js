@@ -1,18 +1,20 @@
 var mongoose = require('mongoose')
 
 var BugSchema = new mongoose.Schema({
+    profile: {type:String, default:''},
     title: {type:String, defualt:''},
-    description: {type:String, default:''},
-    solution: {type:String, default:''},
+    detail: {type:String, default:''},
+    response: {type:String, default:''},
     timestamp: {type:String, default:Date.now}
 })
 
 BugSchema.methods.summary = function(){
 	var summary = {
         id: this._id,
+        profile: this.profile,
         title: this.title,
-        description: this.description,
-        solution: this.solution,
+        detail: this.detail,
+        response: this.response,
         timestamp: this.timestamp
 	}
 
