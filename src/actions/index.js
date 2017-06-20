@@ -20,5 +20,19 @@ export default {
             type: constants.CURRENT_USER_RECEIVED,
             profile: profile
         }
+    },
+
+    bugsReceived: (bugs) => {
+        return {
+            type: constants.BUGS_RECEIVED,
+            bugs: bugs
+        }
+    },
+
+    bugCreated: (bug) => {
+        return{
+            type: constants.BUG_CREATED,
+            bug: bug
+        }
     }
 }

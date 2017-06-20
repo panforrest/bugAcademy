@@ -36,7 +36,8 @@ module.exports = {
 					reject(err)
 					return
 				} 
-				resolve(bug.summary())  //resolve(bug)
+				// resolve(bug.summary())  
+				resolve(bug)
 			})
 		})
 	},
