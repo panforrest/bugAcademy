@@ -21,7 +21,7 @@ class Tracks extends Component {
 				return
 			}
 
-			console.log('Tracks container componentDidMount: '+JSON.stringify(response.results))
+			// console.log('Tracks container componentDidMount: '+JSON.stringify(response.results))
 			var results = response.results
 			// this.setState({
 			// 	tracks: results
