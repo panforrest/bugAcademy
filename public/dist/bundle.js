@@ -1490,6 +1490,15 @@ module.exports = ReactCurrentOwner;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(20);
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -1758,15 +1767,6 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
   }
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(20);
 
 /***/ }),
 /* 14 */
@@ -3455,7 +3455,7 @@ module.exports = ReactInstanceMap;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 var getEventTarget = __webpack_require__(51);
 
@@ -4719,6 +4719,20 @@ exports.default = {
             type: _constants2.default.BUG_CREATED,
             bug: bug
         };
+    },
+
+    tracksReceived: function tracksReceived(tracks) {
+        return {
+            type: _constants2.default.TRACKS_RECEIVED,
+            tracks: tracks
+        };
+    },
+
+    trackCreated: function trackCreated(track) {
+        return {
+            type: _constants2.default.TRACK_CREATED,
+            track: track
+        };
     }
 };
 
@@ -4738,7 +4752,9 @@ exports.default = { //export {
     PROFILE_CREATED: 'PROFILE_CREATED',
     CURRENT_USER_RECEIVED: 'CURRENT_USER_RECEIVED',
     BUGS_RECEIVED: 'BUGS_RECEIVED',
-    BUG_CREATED: 'BUG_CREATED'
+    BUG_CREATED: 'BUG_CREATED',
+    TRACKS_RECEIVED: 'TRACKS_RECEIVED',
+    TRACK_CREATED: 'TRACK_CREATED'
 
 };
 
@@ -4754,7 +4770,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.APIManager = undefined;
 
-var _APIManager = __webpack_require__(248);
+var _APIManager = __webpack_require__(249);
 
 var _APIManager2 = _interopRequireDefault(_APIManager);
 
@@ -10016,7 +10032,7 @@ var _invariant = __webpack_require__(119);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _Subscription = __webpack_require__(207);
 
@@ -11283,7 +11299,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Home = undefined;
 
-var _Home = __webpack_require__(241);
+var _Home = __webpack_require__(242);
 
 var _Home2 = _interopRequireDefault(_Home);
 
@@ -11302,7 +11318,7 @@ Object.defineProperty(exports, "__esModule", {
 				value: true
 });
 
-var _reducers = __webpack_require__(246);
+var _reducers = __webpack_require__(247);
 
 var _redux = __webpack_require__(97);
 
@@ -11324,7 +11340,8 @@ exports.default = {
 
 												profile: _reducers.profileReducer,
 												account: _reducers.accountReducer,
-												bug: _reducers.bugReducer
+												bug: _reducers.bugReducer,
+												track: _reducers.trackReducer
 
 								}),
 								    store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware //applyMiddleware(thunk)
@@ -13505,7 +13522,7 @@ var EventPropagators = __webpack_require__(24);
 var ExecutionEnvironment = __webpack_require__(6);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(10);
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 var getEventTarget = __webpack_require__(51);
 var isEventSupported = __webpack_require__(52);
@@ -20528,7 +20545,7 @@ var EventPropagators = __webpack_require__(24);
 var ExecutionEnvironment = __webpack_require__(6);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInputSelection = __webpack_require__(74);
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 var getActiveElement = __webpack_require__(61);
 var isTextInputElement = __webpack_require__(84);
@@ -20728,7 +20745,7 @@ var EventPropagators = __webpack_require__(24);
 var ReactDOMComponentTree = __webpack_require__(5);
 var SyntheticAnimationEvent = __webpack_require__(179);
 var SyntheticClipboardEvent = __webpack_require__(180);
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 var SyntheticFocusEvent = __webpack_require__(183);
 var SyntheticKeyboardEvent = __webpack_require__(185);
 var SyntheticMouseEvent = __webpack_require__(29);
@@ -20954,7 +20971,7 @@ module.exports = SimpleEventPlugin;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 /**
  * @interface Event
@@ -20998,7 +21015,7 @@ module.exports = SyntheticAnimationEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 /**
  * @interface Event
@@ -21041,7 +21058,7 @@ module.exports = SyntheticClipboardEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 /**
  * @interface Event
@@ -21164,7 +21181,7 @@ module.exports = SyntheticFocusEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 /**
  * @interface Event
@@ -21345,7 +21362,7 @@ module.exports = SyntheticTouchEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(12);
+var SyntheticEvent = __webpack_require__(13);
 
 /**
  * @interface Event
@@ -22215,7 +22232,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.createProvider = createProvider;
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _propTypes = __webpack_require__(65);
 
@@ -26893,7 +26910,7 @@ module.exports = function (module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26962,7 +26979,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26972,7 +26989,7 @@ var _actions2 = _interopRequireDefault(_actions);
 
 var _reactRedux = __webpack_require__(21);
 
-var _presentation = __webpack_require__(243);
+var _presentation = __webpack_require__(244);
 
 var _utils = __webpack_require__(36);
 
@@ -26997,8 +27014,11 @@ var Admin = function (_Component) {
         _this.state = {
             bug: {
                 title: '',
-                details: '',
+                detail: '',
                 response: ''
+            },
+            track: {
+                name: ''
             }
         };
         return _this;
@@ -27087,6 +27107,35 @@ var Admin = function (_Component) {
             });
         }
     }, {
+        key: 'updateTrack',
+        value: function updateTrack(event) {
+            event.preventDefault();
+            console.log('updateTrack: ' + event.target.id + ' == ' + event.target.value);
+            var updatedTrack = Object.assign({}, this.state.track);
+            updatedTrack[event.target.id] = event.target.value;
+            this.setState({
+                track: updatedTrack
+            });
+        }
+    }, {
+        key: 'submitTrack',
+        value: function submitTrack(event) {
+            var _this6 = this;
+
+            event.preventDefault();
+            console.log('to submitTrack: ' + JSON.stringify(this.state.track));
+            _utils.APIManager.post('/api/track', this.state.track, function (err, response) {
+                if (err) {
+                    var msg = err.message || err;
+                    alert(msg);
+                    return;
+                }
+
+                console.log('track submitted: ' + JSON.stringify(response.result));
+                _this6.props.trackCreated(response.result);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -27108,11 +27157,19 @@ var Admin = function (_Component) {
                     ),
                     _react2.default.createElement('input', { onChange: this.updateBug.bind(this), type: 'text', id: 'title', placeholder: 'Title' }),
                     _react2.default.createElement('br', null),
-                    _react2.default.createElement('input', { onChange: this.updateBug.bind(this), type: 'text', id: 'detail', placeholder: 'Detail' }),
+                    _react2.default.createElement('textarea', { onChange: this.updateBug.bind(this), type: 'text', id: 'detail', placeholder: 'Detail' }),
                     _react2.default.createElement('br', null),
-                    _react2.default.createElement('input', { onChange: this.updateBug.bind(this), type: 'text', id: 'response', placeholder: 'Response' }),
+                    _react2.default.createElement('textarea', { onChange: this.updateBug.bind(this), type: 'text', id: 'response', placeholder: 'Response' }),
                     _react2.default.createElement('br', null),
-                    _react2.default.createElement('input', { onClick: this.submitBug.bind(this), type: 'submit', value: 'Submit' })
+                    _react2.default.createElement('input', { onClick: this.submitBug.bind(this), type: 'submit', value: 'Submit' }),
+                    _react2.default.createElement(
+                        'h3',
+                        null,
+                        'Create Track'
+                    ),
+                    _react2.default.createElement('input', { onChange: this.updateTrack.bind(this), type: 'text', id: 'name', placeholder: 'Track Name' }),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement('input', { onClick: this.submitTrack.bind(this), type: 'submit', value: 'Submit' })
                 )
             );
         }
@@ -27139,6 +27196,9 @@ var dispatchToProps = function dispatchToProps(dispatch) {
         },
         bugCreated: function bugCreated(bug) {
             return dispatch(_actions2.default.bugCreated(bug));
+        },
+        trackCreated: function trackCreated(track) {
+            return dispatch(_actions2.default.trackCreated(track));
         }
 
     };
@@ -27159,7 +27219,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -27208,7 +27268,7 @@ var Bugs = function (_Component) {
 					return;
 				}
 
-				console.log(JSON.stringify(response.results));
+				// console.log(JSON.stringify(response.results))
 				var results = response.results;
 				// this.setState({
 				// 	bugs: results
@@ -27273,7 +27333,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -27383,9 +27443,125 @@ exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Profil
 
 
 Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(12);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _utils = __webpack_require__(36);
+
+var _actions = __webpack_require__(34);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+var _reactRedux = __webpack_require__(21);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <li key={i}>{this.props.track.name}</li>
+
+
+var Tracks = function (_Component) {
+	_inherits(Tracks, _Component);
+
+	function Tracks() {
+		_classCallCheck(this, Tracks);
+
+		var _this = _possibleConstructorReturn(this, (Tracks.__proto__ || Object.getPrototypeOf(Tracks)).call(this));
+
+		_this.state = {
+			tracks: []
+		};
+		return _this;
+	}
+
+	_createClass(Tracks, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			console.log('Tracks container componentDidMount: ');
+			_utils.APIManager.get('/api/track', null, function (err, response) {
+				if (err) {
+					var msg = err.message || err;
+					alert(msg);
+					return;
+				}
+
+				console.log('Tracks container componentDidMount: ' + JSON.stringify(response.results));
+				var results = response.results;
+				// this.setState({
+				// 	tracks: results
+				// })
+				_this2.props.tracksReceived(response.results);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var list = this.props.tracks.map(function (track, i) {
+				return _react2.default.createElement(
+					'li',
+					{ key: i },
+					track.name
+				);
+			});
+
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'h2',
+					null,
+					'Track List'
+				),
+				_react2.default.createElement(
+					'ol',
+					null,
+					list
+				)
+			);
+		}
+	}]);
+
+	return Tracks;
+}(_react.Component);
+
+var stateToProps = function stateToProps(state) {
+	return {
+		tracks: state.track.list
+	};
+};
+
+var dispatchToProps = function dispatchToProps(dispatch) {
+	return {
+		tracksReceived: function tracksReceived(tracks) {
+			return dispatch(_actions2.default.tracksReceived(tracks));
+		}
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Tracks);
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Admin = exports.Bugs = exports.Profiles = undefined;
+exports.Tracks = exports.Admin = exports.Bugs = exports.Profiles = undefined;
 
 var _Profiles = __webpack_require__(239);
 
@@ -27399,14 +27575,19 @@ var _Admin = __webpack_require__(237);
 
 var _Admin2 = _interopRequireDefault(_Admin);
 
+var _Tracks = __webpack_require__(240);
+
+var _Tracks2 = _interopRequireDefault(_Tracks);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Profiles = _Profiles2.default;
 exports.Bugs = _Bugs2.default;
 exports.Admin = _Admin2.default;
+exports.Tracks = _Tracks2.default;
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27418,11 +27599,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _containers = __webpack_require__(240);
+var _containers = __webpack_require__(241);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27453,7 +27634,7 @@ var Home = function (_Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'col-md-3' },
-                        _react2.default.createElement(_containers.Profiles, null)
+                        _react2.default.createElement(_containers.Tracks, null)
                     ),
                     _react2.default.createElement(
                         'div',
@@ -27476,7 +27657,7 @@ var Home = function (_Component) {
 exports.default = Home;
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27488,7 +27669,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -27654,7 +27835,7 @@ var dispatchToProps = function dispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(stateToProps, dispatchToProps)(Signup);
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27665,7 +27846,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Signup = undefined;
 
-var _Signup = __webpack_require__(242);
+var _Signup = __webpack_require__(243);
 
 var _Signup2 = _interopRequireDefault(_Signup);
 
@@ -27674,7 +27855,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.Signup = _Signup2.default;
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27718,7 +27899,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27747,7 +27928,7 @@ exports.default = function () {
     var updated = Object.assign({}, state);
     switch (action.type) {
         case _constants2.default.BUGS_RECEIVED:
-            console.log('BUGS_RECEIVED: ' + JSON.stringify(action.bugs));
+            // console.log('BUGS_RECEIVED: '+JSON.stringify(action.bugs))
             updated['list'] = action.bugs;
             return updated;
 
@@ -27763,7 +27944,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27772,28 +27953,33 @@ exports.default = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.bugReducer = exports.accountReducer = exports.profileReducer = undefined;
+exports.trackReducer = exports.bugReducer = exports.accountReducer = exports.profileReducer = undefined;
 
-var _profileReducer = __webpack_require__(247);
+var _profileReducer = __webpack_require__(248);
 
 var _profileReducer2 = _interopRequireDefault(_profileReducer);
 
-var _accountReducer = __webpack_require__(244);
+var _accountReducer = __webpack_require__(245);
 
 var _accountReducer2 = _interopRequireDefault(_accountReducer);
 
-var _bugReducer = __webpack_require__(245);
+var _bugReducer = __webpack_require__(246);
 
 var _bugReducer2 = _interopRequireDefault(_bugReducer);
+
+var _trackReducer = __webpack_require__(250);
+
+var _trackReducer2 = _interopRequireDefault(_trackReducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.profileReducer = _profileReducer2.default;
 exports.accountReducer = _accountReducer2.default;
 exports.bugReducer = _bugReducer2.default;
+exports.trackReducer = _trackReducer2.default;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27839,7 +28025,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27906,6 +28092,51 @@ exports.default = {
             );
         });
     }
+};
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(35);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var initialState = {
+
+	list: []
+
+};
+
+exports.default = function () {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	var action = arguments[1];
+
+	var updatedState = Object.assign({}, state);
+	switch (action.type) {
+		case _constants2.default.TRACKS_RECEIVED:
+			console.log('TRACKS_RECEIVED: ' + JSON.stringify(action.tracks));
+			updatedState['list'] = action.tracks;
+			return updatedState;
+
+		case _constants2.default.TRACK_CREATED:
+			var updatedList = Object.assign([], updatedState.list);
+			updatedList.push(action.track);
+			updatedState['list'] = updatedList;
+			return updatedState;
+
+		default:
+			return state;
+	}
 };
 
 /***/ })

@@ -34,5 +34,19 @@ export default {
             type: constants.BUG_CREATED,
             bug: bug
         }
+    },
+
+    tracksReceived: (tracks) => {
+        return {
+            type: constants.TRACKS_RECEIVED,
+            tracks: tracks
+        }
+    },
+
+    trackCreated: (track) => {
+        return {
+            type: constants.TRACK_CREATED,
+            track: track
+        }
     }
 }

@@ -1,4 +1,4 @@
-import { profileReducer, accountReducer, bugReducer } from '../reducers'
+import { profileReducer, accountReducer, bugReducer, trackReducer } from '../reducers'
 import { applyMiddleware, createStore, combineReducers } from 'redux'  //'react-redux'
 import thunk from 'redux-thunk'   //{ thunk }
 
@@ -12,7 +12,8 @@ export default {
 
 	    	profile: profileReducer,
 	    	account: accountReducer,
-	    	bug: bugReducer
+	    	bug: bugReducer,
+	    	track: trackReducer
 
 	    }),
 

@@ -10,7 +10,7 @@ export default (state=initialState, action) => {
     var updated = Object.assign({}, state)
     switch(action.type){
     	case constants.BUGS_RECEIVED:
-    	    console.log('BUGS_RECEIVED: '+JSON.stringify(action.bugs))
+    	    // console.log('BUGS_RECEIVED: '+JSON.stringify(action.bugs))
             updated['list'] = action.bugs
             return updated
 

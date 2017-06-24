@@ -23,7 +23,7 @@ class Bugs extends Component {
 				return
 			}
 
-			console.log(JSON.stringify(response.results))
+			// console.log(JSON.stringify(response.results))
 			var results = response.results
 			// this.setState({
 			// 	bugs: results
