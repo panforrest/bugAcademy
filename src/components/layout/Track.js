@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-class Track extends Componet {
+class Track extends Component {
 	render(){
 		return(
 			<div>
-			    This is Track Page.
+			    This is Track component.
 			</div>
 		)
 	}

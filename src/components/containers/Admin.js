@@ -17,7 +17,8 @@ class Admin extends Component {
                 response: ''
             },
             track: {
-                name: ''
+                name: '',
+                slug: ''
             }
         }
     }
@@ -104,10 +105,27 @@ class Admin extends Component {
     submitTrack(event){
         event.preventDefault()
         console.log('to submitTrack: '+JSON.stringify(this.state.track))
-        APIManager.post('/api/track', this.state.track, (err, response) => {
+        var track = this.state.track
+        var name = track.name
+        var parts = name.split(' ')
+
+        var slug = ''
+        for (var i=0; i<parts.length; i++){
+            var word = parts[i]
+            slug += word
+            if (i != parts.length-1)
+                slug += '-'
+        }
+
+        // slug = slug.repalce('?', '-')
+        track['slug'] = slug
+        console.log(JSON.stringify(track))
+
+
+        APIManager.post('/api/track', track, (err, response) => {
             if (err){
                 const msg = err.message || err
-                alert(msg)
+                alert(JSON.stringify(msg))
                 return
             }
 

@@ -2,32 +2,46 @@ import { profileReducer, accountReducer, bugReducer, trackReducer } from '../red
 import { applyMiddleware, createStore, combineReducers } from 'redux'  //'react-redux'
 import thunk from 'redux-thunk'   //{ thunk }
 
-var store;
+// var store;
 
-export default {
+// export default {
 
-    configureStore: () => {  //configureStore = () => {
+//     configureStore: () => {  //configureStore = () => {
  
-	    const reducers = combineReducers({
+// 	    const reducers = combineReducers({
 
-	    	profile: profileReducer,
-	    	account: accountReducer,
-	    	bug: bugReducer,
-	    	track: trackReducer
+// 	    	profile: profileReducer,
+// 	    	account: accountReducer,
+// 	    	bug: bugReducer,
+// 	    	track: trackReducer
 
-	    }),
+// 	    }),
 
-	    store = createStore(
+// 	    store = createStore(
 
-	        reducers,
-	    	applyMiddleware()  //applyMiddleware(thunk)
+// 	        reducers,
+// 	    	applyMiddleware()  //applyMiddleware(thunk)
 
-	    ) 
+// 	    ) 
 
-        return store
-    }, 
+//         return store
+//     }, 
 
-    currentStore: () => {
-        return store
-    }
-}
+//     currentStore: () => {
+//         return store
+//     }
+// }
+
+var reducers = combineReducers({
+	profile: profileReducer,
+	account: accountReducer,
+	bug: bugReducer,
+	track: trackReducer
+})
+
+var store = createStore(
+	reducers,
+	applyMiddleware(thunk)
+)
+
+export default store
