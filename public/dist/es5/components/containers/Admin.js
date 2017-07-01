@@ -53,7 +53,7 @@ var Admin = (function (Component) {
                         alert(msg);
                         return;
                     }
-                    // console.log('Admin.js: ', JSON.stringify(response.profile))
+                    console.log("Admin.js: ", JSON.stringify(response.profile));
                     _this.props.currentUserReceived(response.profile);
                 });
             },
@@ -160,7 +160,7 @@ var Admin = (function (Component) {
                     if (i != parts.length - 1) slug += "-";
                 }
 
-                // slug = slug.repalce('?', '-')
+                slug = slug.replace("?", "-");
                 track.slug = slug;
                 console.log(JSON.stringify(track));
 

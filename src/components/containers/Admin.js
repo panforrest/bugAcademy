@@ -31,7 +31,7 @@ class Admin extends Component {
                 alert(msg)
                 return
             }
-            // console.log('Admin.js: ', JSON.stringify(response.profile))
+            console.log('Admin.js: ', JSON.stringify(response.profile))
             this.props.currentUserReceived(response.profile)
         })
     }
@@ -117,7 +117,7 @@ class Admin extends Component {
                 slug += '-'
         }
 
-        // slug = slug.repalce('?', '-')
+        slug = slug.replace('?', '-')
         track['slug'] = slug
         console.log(JSON.stringify(track))
 

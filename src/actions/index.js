@@ -15,7 +15,7 @@ export default {
     	}
     },
 
-    currentUserReceived: (profile) => {
+    currentUserReceived: function(profile){
         return {
             type: constants.CURRENT_USER_RECEIVED,
             profile: profile

@@ -103,6 +103,10 @@ var Signup = (function (Component) {
             null,
             " Welcome, ",
             this.props.currentUser.email,
+            " ",
+            this.props.currentUser.firstName,
+            " ",
+            this.props.currentUser.lastName,
             " "
           ) : React.createElement(
             "div",

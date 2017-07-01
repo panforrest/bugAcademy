@@ -12,6 +12,8 @@ var Tracks = _interopRequire(require("./Tracks"));
 
 var Main = _interopRequire(require("./Main"));
 
+// import Register from './Register'
+
 exports.Profiles = Profiles;
 exports.Bugs = Bugs;
 exports.Admin = Admin;
@@ -22,3 +24,5 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 //export default {
+
+// Register

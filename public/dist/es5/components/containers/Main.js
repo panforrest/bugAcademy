@@ -19,9 +19,12 @@ var Tracks = _interopRequire(require("./Tracks"));
 
 var Admin = _interopRequire(require("./Admin"));
 
-var Track = _interopRequire(require("../layout/Track"));
+var _layout = require("../layout/");
 
-// import { Track } from '../layout'
+var Track = _layout.Track;
+var Register = _layout.Register;
+var Account = _layout.Account;
+// import Register from './Register'
 
 var Main = (function (Component) {
     function Main() {
@@ -54,6 +57,10 @@ var Main = (function (Component) {
                 );
 
                 if (page == "track") content = React.createElement(Track, { slug: this.props.slug });
+
+                if (page == "register") content = React.createElement(Register, null);
+
+                if (page == "account") content = React.createElement(Account, null);
 
                 return React.createElement(
                     "div",
