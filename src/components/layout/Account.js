@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { APIManager } from '../../utils'
 import actions from '../../actions'   //import actions from '../../constants'
 import { connect } from 'react-redux'
+import { Nav } from '../containers'
 
 class Account extends Component {
     constructor(props, context){
@@ -48,6 +49,7 @@ class Account extends Component {
 
 		return(
 			<div>
+                
 			    This is Account Layout. 
 
                 <h3>Hi, {this.props.currentUser.firstName} {this.props.currentUser.lastName}</h3>

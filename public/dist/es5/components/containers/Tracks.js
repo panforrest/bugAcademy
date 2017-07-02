@@ -11,6 +11,7 @@ var _inherits = function (subClass, superClass) { if (typeof superClass !== "fun
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 // <li key={i}>{this.props.track.name}</li>
+// <li key={track._id}><a href={'/track/'+track.slug}>{track.name}</a></li>
 var _react = require("react");
 
 var React = _interopRequire(_react);
@@ -20,7 +21,9 @@ var APIManager = require("../../utils").APIManager;
 var actions = _interopRequire(require("../../actions"));
 
 var connect = require("react-redux").connect;
-// import { Admin } from '../containers'
+var TrackPreview = _interopRequire(require("./TrackPreview"));
+
+var Admin = _interopRequire(require("./Admin"));
 
 var Tracks = (function (Component) {
 	function Tracks(context, props) {
@@ -59,31 +62,32 @@ var Tracks = (function (Component) {
 		},
 		render: {
 			value: function render() {
-				var list = this.props.tracks.map(function (track, i) {
-					return React.createElement(
-						"li",
-						{ key: track._id },
-						React.createElement(
-							"a",
-							{ href: "/track/" + track.slug },
-							track.name
-						)
-					);
+				var trackList = this.props.tracks.map(function (track, i) {
+					return React.createElement(TrackPreview, { key: track._id, track: track });
 				});
 
 				return React.createElement(
 					"div",
-					null,
+					{ className: "container clearifx" },
 					React.createElement(
-						"h2",
-						null,
-						"Track List"
+						"div",
+						{ className: "col_three_fifth bothsidebar nobottommargin" },
+						React.createElement(
+							"div",
+							{ className: "fancy-title title-border" },
+							React.createElement(
+								"h3",
+								null,
+								"Tracks"
+							)
+						),
+						React.createElement(
+							"div",
+							{ id: "posts", className: "events small-thumbs" },
+							trackList
+						)
 					),
-					React.createElement(
-						"ol",
-						null,
-						list
-					)
+					React.createElement(Admin, null)
 				);
 			},
 			writable: true,

@@ -3,6 +3,7 @@ import { Signup } from '../presentation'
 import { APIManager } from '../../utils' 
 import actions from '../../actions'
 import { connect } from 'react-redux'
+import { Nav } from '../containers'
 
 class Register extends Component {
     componentDidMount(){
@@ -52,6 +53,7 @@ class Register extends Component {
 	render(){
 		return(
             <div>
+            
                 {(this.props.currentUser != null) ? <h2> Welcome, { this.props.currentUser.email } { this.props.currentUser.firstName } { this.props.currentUser.lastName } </h2> :  
 
         			<div>

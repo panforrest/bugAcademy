@@ -11894,6 +11894,14 @@ var _actions2 = _interopRequireDefault(_actions);
 
 var _reactRedux = __webpack_require__(14);
 
+var _TrackPreview = __webpack_require__(258);
+
+var _TrackPreview2 = _interopRequireDefault(_TrackPreview);
+
+var _Admin = __webpack_require__(102);
+
+var _Admin2 = _interopRequireDefault(_Admin);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11901,9 +11909,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <li key={i}>{this.props.track.name}</li>
+// <li key={track._id}><a href={'/track/'+track.slug}>{track.name}</a></li>
 
-
-// import { Admin } from '../containers'
 
 var Tracks = function (_Component) {
 	_inherits(Tracks, _Component);
@@ -11943,31 +11950,32 @@ var Tracks = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var list = this.props.tracks.map(function (track, i) {
-				return _react2.default.createElement(
-					'li',
-					{ key: track._id },
-					_react2.default.createElement(
-						'a',
-						{ href: '/track/' + track.slug },
-						track.name
-					)
-				);
+			var trackList = this.props.tracks.map(function (track, i) {
+				return _react2.default.createElement(_TrackPreview2.default, { key: track._id, track: track });
 			});
 
 			return _react2.default.createElement(
 				'div',
-				null,
+				{ className: 'container clearifx' },
 				_react2.default.createElement(
-					'h2',
-					null,
-					'Track List'
+					'div',
+					{ className: 'col_three_fifth bothsidebar nobottommargin' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'fancy-title title-border' },
+						_react2.default.createElement(
+							'h3',
+							null,
+							'Tracks'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ id: 'posts', className: 'events small-thumbs' },
+						trackList
+					)
 				),
-				_react2.default.createElement(
-					'ol',
-					null,
-					list
-				)
+				_react2.default.createElement(_Admin2.default, null)
 			);
 		}
 	}]);
@@ -12030,7 +12038,7 @@ module.exports = __webpack_require__(150);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Main = exports.Tracks = exports.Admin = exports.Bugs = exports.Profiles = undefined;
+exports.Nav = exports.Main = exports.Tracks = exports.Admin = exports.Bugs = exports.Profiles = undefined;
 
 var _Profiles = __webpack_require__(246);
 
@@ -12052,15 +12060,18 @@ var _Main = __webpack_require__(245);
 
 var _Main2 = _interopRequireDefault(_Main);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Nav = __webpack_require__(259);
 
-// import Register from './Register'
+var _Nav2 = _interopRequireDefault(_Nav);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Profiles = _Profiles2.default;
 exports.Bugs = _Bugs2.default;
 exports.Admin = _Admin2.default;
 exports.Tracks = _Tracks2.default;
 exports.Main = _Main2.default;
+exports.Nav = _Nav2.default;
 
 /***/ }),
 /* 107 */
@@ -28019,9 +28030,9 @@ var _Tracks = __webpack_require__(103);
 
 var _Tracks2 = _interopRequireDefault(_Tracks);
 
-var _Admin = __webpack_require__(102);
+var _Nav = __webpack_require__(259);
 
-var _Admin2 = _interopRequireDefault(_Admin);
+var _Nav2 = _interopRequireDefault(_Nav);
 
 var _layout = __webpack_require__(250);
 
@@ -28058,12 +28069,13 @@ var Main = function (_Component) {
         value: function render() {
             var content = null;
             var page = this.props.page;
-            if (page == 'home') content = _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(_Tracks2.default, null),
-                _react2.default.createElement(_Admin2.default, null)
-            );
+            if (page == 'home')
+                // content = <div><Tracks /><Admin /></div>
+                content = _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(_Tracks2.default, null)
+                );
 
             if (page == 'track') content = _react2.default.createElement(_layout.Track, { slug: this.props.slug });
 
@@ -28074,6 +28086,7 @@ var Main = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 null,
+                _react2.default.createElement(_Nav2.default, null),
                 content
             );
         }
@@ -28222,6 +28235,8 @@ var _actions2 = _interopRequireDefault(_actions);
 
 var _reactRedux = __webpack_require__(14);
 
+var _containers = __webpack_require__(106);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28357,6 +28372,8 @@ var _actions = __webpack_require__(19);
 var _actions2 = _interopRequireDefault(_actions);
 
 var _reactRedux = __webpack_require__(14);
+
+var _containers = __webpack_require__(106);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28496,6 +28513,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _utils = __webpack_require__(16);
 
+var _containers = __webpack_require__(106);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28551,6 +28570,20 @@ var Track = function (_Component) {
           'h2',
           null,
           this.state.track.name
+        ),
+        _react2.default.createElement(
+          'ol',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            'Bug1'
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            'Bug2'
+          )
         )
       );
     }
@@ -29064,6 +29097,251 @@ exports.default = {
         });
     }
 };
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TrackPreview = function (_Component) {
+    _inherits(TrackPreview, _Component);
+
+    function TrackPreview() {
+        _classCallCheck(this, TrackPreview);
+
+        return _possibleConstructorReturn(this, (TrackPreview.__proto__ || Object.getPrototypeOf(TrackPreview)).apply(this, arguments));
+    }
+
+    _createClass(TrackPreview, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "entry clearfix" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "entry-image hidden-sm" },
+                    _react2.default.createElement(
+                        "a",
+                        { href: '/track/' + this.props.track.slug },
+                        _react2.default.createElement("img", { src: "images/events/thumbs/1.jpg", alt: "tenetur" })
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "entry-c" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "entry-title" },
+                        _react2.default.createElement(
+                            "h2",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: '/track/' + this.props.track.slug },
+                                this.props.track.name
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "ul",
+                        { className: "entry-meta clearfix" },
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "span",
+                                { className: "label label-warning" },
+                                "Private"
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                _react2.default.createElement("i", { className: "icon-time" }),
+                                " ",
+                                this.props.track.address,
+                                " "
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "li",
+                            null,
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                _react2.default.createElement("i", { className: "icon-map-marker2" }),
+                                " ",
+                                this.props.track.city,
+                                " "
+                            )
+                        )
+                    ),
+                    _react2.default.createElement("hr", { style: { borderTop: '1px solid #ddd' } }),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "entry-content" },
+                        _react2.default.createElement(
+                            "a",
+                            { href: '/track/' + this.props.track.slug, className: "btn  btn-danger" },
+                            "Visit"
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return TrackPreview;
+}(_react.Component);
+
+exports.default = TrackPreview;
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+				value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_Component) {
+				_inherits(Nav, _Component);
+
+				function Nav() {
+								_classCallCheck(this, Nav);
+
+								return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+				}
+
+				_createClass(Nav, [{
+								key: "render",
+								value: function render() {
+												return _react2.default.createElement(
+																"header",
+																{ id: "header", className: "transparent-header dark" },
+																_react2.default.createElement(
+																				"div",
+																				{ id: "header-wrap" },
+																				_react2.default.createElement(
+																								"div",
+																								{ className: "container clearfix" },
+																								_react2.default.createElement(
+																												"div",
+																												{ id: "primary-menu-trigger" },
+																												_react2.default.createElement("i", { className: "icon-reorder" })
+																								),
+																								_react2.default.createElement(
+																												"div",
+																												{ id: "logo" },
+																												_react2.default.createElement(
+																																"a",
+																																{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
+																																_react2.default.createElement("img", { src: "/images/logo.png", alt: "Canvas Logo" })
+																												),
+																												_react2.default.createElement(
+																																"a",
+																																{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
+																																_react2.default.createElement("img", { src: "/images/logo@2x.png", alt: "Canvas Logo" })
+																												)
+																								),
+																								_react2.default.createElement(
+																												"nav",
+																												{ id: "primary-menu" },
+																												_react2.default.createElement(
+																																"ul",
+																																null,
+																																_react2.default.createElement(
+																																				"li",
+																																				null,
+																																				_react2.default.createElement(
+																																								"a",
+																																								{ href: "/" },
+																																								_react2.default.createElement(
+																																												"div",
+																																												null,
+																																												"Home"
+																																								)
+																																				)
+																																),
+																																_react2.default.createElement(
+																																				"li",
+																																				null,
+																																				_react2.default.createElement(
+																																								"a",
+																																								{ href: "/register" },
+																																								_react2.default.createElement(
+																																												"div",
+																																												null,
+																																												"Register"
+																																								)
+																																				)
+																																),
+																																_react2.default.createElement(
+																																				"li",
+																																				null,
+																																				_react2.default.createElement(
+																																								"a",
+																																								{ href: "/" },
+																																								_react2.default.createElement(
+																																												"div",
+																																												null,
+																																												"Home"
+																																								)
+																																				)
+																																)
+																												)
+																								)
+																				)
+																)
+												);
+								}
+				}]);
+
+				return Nav;
+}(_react.Component);
+
+exports.default = Nav;
 
 /***/ })
 /******/ ]);

@@ -16,6 +16,7 @@ var React = _interopRequire(_react);
 
 var Component = _react.Component;
 var APIManager = require("../../utils").APIManager;
+var Nav = require("../containers").Nav;
 var Track = (function (Component) {
   function Track() {
     _classCallCheck(this, Track);
@@ -62,6 +63,20 @@ var Track = (function (Component) {
             "h2",
             null,
             this.state.track.name
+          ),
+          React.createElement(
+            "ol",
+            null,
+            React.createElement(
+              "li",
+              null,
+              "Bug1"
+            ),
+            React.createElement(
+              "li",
+              null,
+              "Bug2"
+            )
           )
         );
       },

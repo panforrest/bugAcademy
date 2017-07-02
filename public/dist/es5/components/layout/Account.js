@@ -21,6 +21,7 @@ var actions = _interopRequire(require("../../actions"));
 
 //import actions from '../../constants'
 var connect = require("react-redux").connect;
+var Nav = require("../containers").Nav;
 var Account = (function (Component) {
   function Account(props, context) {
     _classCallCheck(this, Account);

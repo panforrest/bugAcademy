@@ -1,9 +1,11 @@
 // <li key={i}>{this.props.track.name}</li>
+                // <li key={track._id}><a href={'/track/'+track.slug}>{track.name}</a></li>
 import React, { Component } from 'react'
 import { APIManager } from '../../utils'
 import actions from '../../actions'
 import { connect } from 'react-redux'
-// import { Admin } from '../containers'
+import TrackPreview from './TrackPreview'
+import Admin from './Admin'
 
 class Tracks extends Component {
 	constructor(context, props){
@@ -32,21 +34,24 @@ class Tracks extends Component {
 	}
 
 	render(){
-        var list = this.props.tracks.map((track, i) => {
-        	return (
-                <li key={track._id}><a href={'/track/'+track.slug}>{track.name}</a></li>
-        	)
+        var trackList = this.props.tracks.map((track, i) => {
+        	return <TrackPreview key={track._id} track={track} />
         })
 
-		return(
-			<div>
-			    <h2>Track List</h2>
-			    
-			    <ol>
-			        {list}
-			    </ol>    
-			</div>
-		)
+    	return(
+    		<div className="container clearifx">
+                <div className="col_three_fifth bothsidebar nobottommargin">
+                    <div className="fancy-title title-border">
+                        <h3>Tracks</h3>
+                    </div>
+
+                    <div id="posts" className="events small-thumbs">
+                        {trackList}
+                    </div>    
+                </div>
+                <Admin />
+            </div>    
+        )    
 	}
 }
 

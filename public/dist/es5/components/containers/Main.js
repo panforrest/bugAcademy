@@ -17,7 +17,7 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 var Tracks = _interopRequire(require("./Tracks"));
 
-var Admin = _interopRequire(require("./Admin"));
+var Nav = _interopRequire(require("./Nav"));
 
 var _layout = require("../layout/");
 
@@ -49,12 +49,13 @@ var Main = (function (Component) {
             value: function render() {
                 var content = null;
                 var page = this.props.page;
-                if (page == "home") content = React.createElement(
-                    "div",
-                    null,
-                    React.createElement(Tracks, null),
-                    React.createElement(Admin, null)
-                );
+                if (page == "home")
+                    // content = <div><Tracks /><Admin /></div>
+                    content = React.createElement(
+                        "div",
+                        null,
+                        React.createElement(Tracks, null)
+                    );
 
                 if (page == "track") content = React.createElement(Track, { slug: this.props.slug });
 
@@ -65,6 +66,7 @@ var Main = (function (Component) {
                 return React.createElement(
                     "div",
                     null,
+                    React.createElement(Nav, null),
                     content
                 );
             },
