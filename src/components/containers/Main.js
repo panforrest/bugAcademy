@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import Tracks from './Tracks'
 import Nav from './Nav'
+import Footer from './Footer'
 import { Track, Register, Account } from '../layout/'
 // import Register from './Register'
 
@@ -33,6 +34,7 @@ class Main extends Component {
 			<div>
                 <Nav />
                 { content }
+                <Footer />
 	        </div>
 		)
 	}

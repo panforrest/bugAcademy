@@ -10,6 +10,7 @@ var _inherits = function (subClass, superClass) { if (typeof superClass !== "fun
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
+// <Nav transparent="no" />
 var _react = require("react");
 
 var React = _interopRequire(_react);
@@ -17,75 +18,154 @@ var React = _interopRequire(_react);
 var Component = _react.Component;
 var APIManager = require("../../utils").APIManager;
 var Nav = require("../containers").Nav;
+var actions = _interopRequire(require("../../actions"));
+
+var connect = require("react-redux").connect;
 var Track = (function (Component) {
-  function Track() {
-    _classCallCheck(this, Track);
+    function Track() {
+        _classCallCheck(this, Track);
 
-    _get(Object.getPrototypeOf(Track.prototype), "constructor", this).call(this);
-    this.state = {
-      track: {
-        name: ""
-      }
-    };
-  }
-
-  _inherits(Track, Component);
-
-  _prototypeProperties(Track, null, {
-    componentDidMount: {
-      value: function componentDidMount() {
-        var _this = this;
-        // console.log('Track.js layout componentDidMount: ')
-        // APIManager.get('/api/track/'+this.props.slug, null, (err, response) => {
-        APIManager.get("/api/track?slug=" + this.props.slug, null, function (err, response) {
-          if (err) {
-            var msg = err.message || err;
-            alert(msg);
-            return;
-          }
-          console.log(JSON.stringify(response.results)); //(response.result))
-          var track = response.results[0];
-          _this.setState({
-            track: track
-          });
-        });
-      },
-      writable: true,
-      configurable: true
-    },
-    render: {
-      value: function render() {
-        return React.createElement(
-          "div",
-          null,
-          "This is Track component.",
-          React.createElement(
-            "h2",
-            null,
-            this.state.track.name
-          ),
-          React.createElement(
-            "ol",
-            null,
-            React.createElement(
-              "li",
-              null,
-              "Bug1"
-            ),
-            React.createElement(
-              "li",
-              null,
-              "Bug2"
-            )
-          )
-        );
-      },
-      writable: true,
-      configurable: true
+        _get(Object.getPrototypeOf(Track.prototype), "constructor", this).call(this);
+        this.state = {
+            track: {
+                name: ""
+            }
+        };
     }
-  });
 
-  return Track;
+    _inherits(Track, Component);
+
+    _prototypeProperties(Track, null, {
+        componentDidMount: {
+            value: function componentDidMount() {
+                var _this = this;
+                // console.log('Track.js layout componentDidMount: ')
+                // APIManager.get('/api/track/'+this.props.slug, null, (err, response) => {
+                APIManager.get("/api/track?slug=" + this.props.slug, null, function (err, response) {
+                    if (err) {
+                        var msg = err.message || err;
+                        alert(msg);
+                        return;
+                    }
+                    console.log(JSON.stringify(response.results)); //(response.result))
+                    var tracks = response.results;
+                    // this.setState({
+                    // 	track: track
+                    // })
+                    _this.props.tracksReceived(tracks);
+                });
+            },
+            writable: true,
+            configurable: true
+        },
+        render: {
+            value: function render() {
+                return React.createElement(
+                    "div",
+                    null,
+                    React.createElement(
+                        "section",
+                        { id: "content" },
+                        React.createElement(
+                            "div",
+                            { className: "content-wrap" },
+                            React.createElement(
+                                "div",
+                                { className: "container clearfix" },
+                                React.createElement(
+                                    "div",
+                                    { className: "postcontent nobottommargin clearfix" },
+                                    React.createElement(
+                                        "h4",
+                                        null,
+                                        this.props.track.name
+                                    ),
+                                    React.createElement("input", { placeholder: "Post Title", className: "form-control", type: "text" }),
+                                    React.createElement("br", null),
+                                    React.createElement("textarea", { placeholder: "Post Text", className: "form-control" }),
+                                    React.createElement("br", null),
+                                    React.createElement(
+                                        "button",
+                                        { className: "btn btn-success" },
+                                        "Add Bug"
+                                    ),
+                                    React.createElement("br", null),
+                                    React.createElement("hr", { style: { borderTop: "1px solid red #444" } }),
+                                    React.createElement(
+                                        "div",
+                                        { className: "list-group" },
+                                        React.createElement(
+                                            "a",
+                                            { href: "#", className: "list-group-item" },
+                                            React.createElement(
+                                                "h4",
+                                                { className: "list-group-item-heading" },
+                                                "List group item heading"
+                                            ),
+                                            React.createElement(
+                                                "p",
+                                                { className: "list-group-item-text" },
+                                                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio."
+                                            )
+                                        ),
+                                        React.createElement(
+                                            "a",
+                                            { href: "#", className: "list-group-item" },
+                                            React.createElement(
+                                                "h4",
+                                                { className: "list-group-item-heading" },
+                                                "List group item heading"
+                                            ),
+                                            React.createElement(
+                                                "p",
+                                                { className: "list-group-item-text" },
+                                                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio."
+                                            )
+                                        ),
+                                        React.createElement(
+                                            "a",
+                                            { href: "#", className: "list-group-item" },
+                                            React.createElement(
+                                                "h4",
+                                                { className: "list-group-item-heading" },
+                                                "List group item heading"
+                                            ),
+                                            React.createElement(
+                                                "p",
+                                                { className: "list-group-item-text" },
+                                                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio."
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+            },
+            writable: true,
+            configurable: true
+        }
+    });
+
+    return Track;
 })(Component);
 
-module.exports = Track;
+var stateToProps = function (state) {
+    // var tracksArray = state.tracks.list
+    var tracksArray = state.track.list;
+
+    return {
+        track: tracksArray.length == 0 ? { name: "" } : tracksArray[0]
+    };
+};
+
+var dispatchToProps = function (dispatch) {
+    return {
+        tracksReceived: function (tracks) {
+            return dispatch(actions.tracksReceived(tracks));
+        }
+    };
+};
+
+module.exports = connect(stateToProps, dispatchToProps)(Track);

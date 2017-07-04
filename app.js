@@ -17,7 +17,9 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
+// app.set('view engine', 'hjs');
+app.set('view engine', 'mustache');
+app.engine('mustache', require('hogan-middleware').__express) //app.set('mustache', require('hogan-middleware').__express)
 
 // var dbUrl = 'mongodb://localhost/bugAcademy' //var dbUrl = mongoose.mongoDb('//local:bugAcademy')
 
