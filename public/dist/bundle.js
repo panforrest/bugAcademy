@@ -28932,6 +28932,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <Nav transparent="no" />
+// <li key={bug._id}>{bug.title}</li>
 
 
 var Track = function (_Component) {
@@ -28981,6 +28982,8 @@ var Track = function (_Component) {
     }, {
         key: 'fetchPosts',
         value: function fetchPosts() {
+            var _this4 = this;
+
             console.log('fetchPosts: ');
             console.log(JSON.stringify(this.props.track._id));
             if (this.props.track._id == null) {
@@ -28996,6 +28999,7 @@ var Track = function (_Component) {
                 }
 
                 console.log(JSON.stringify(response.results));
+                _this4.props.bugsReceived(response.results);
             });
         }
     }, {
@@ -29014,7 +29018,7 @@ var Track = function (_Component) {
     }, {
         key: 'submitBug',
         value: function submitBug(event) {
-            var _this4 = this;
+            var _this5 = this;
 
             event.preventDefault();
             var bug = Object.assign({}, this.state.bug); // var bug = this.state.bug
@@ -29027,13 +29031,30 @@ var Track = function (_Component) {
                     alert(msg);
                     return;
                 }
-                _this4.props.bugCreated(response.result);
+                _this5.props.bugCreated(response.result);
                 console.log('submitBug: ' + JSON.stringify(response.result));
             });
         }
     }, {
         key: 'render',
         value: function render() {
+            var bugList = this.props.bugs.map(function (bug, i) {
+                return _react2.default.createElement(
+                    'a',
+                    { key: i, href: '#', className: 'list-group-item' },
+                    _react2.default.createElement(
+                        'h4',
+                        { className: 'list-group-item-heading' },
+                        bug.title
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        { className: 'list-group-item-text' },
+                        bug.detail
+                    )
+                );
+            });
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -29067,52 +29088,7 @@ var Track = function (_Component) {
                                 ),
                                 _react2.default.createElement('br', null),
                                 _react2.default.createElement('hr', { style: { borderTop: '1px solid red #444' } }),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'list-group' },
-                                    _react2.default.createElement(
-                                        'a',
-                                        { href: '#', className: 'list-group-item' },
-                                        _react2.default.createElement(
-                                            'h4',
-                                            { className: 'list-group-item-heading' },
-                                            'List group item heading'
-                                        ),
-                                        _react2.default.createElement(
-                                            'p',
-                                            { className: 'list-group-item-text' },
-                                            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.'
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'a',
-                                        { href: '#', className: 'list-group-item' },
-                                        _react2.default.createElement(
-                                            'h4',
-                                            { className: 'list-group-item-heading' },
-                                            'List group item heading'
-                                        ),
-                                        _react2.default.createElement(
-                                            'p',
-                                            { className: 'list-group-item-text' },
-                                            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.'
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'a',
-                                        { href: '#', className: 'list-group-item' },
-                                        _react2.default.createElement(
-                                            'h4',
-                                            { className: 'list-group-item-heading' },
-                                            'List group item heading'
-                                        ),
-                                        _react2.default.createElement(
-                                            'p',
-                                            { className: 'list-group-item-text' },
-                                            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.'
-                                        )
-                                    )
-                                )
+                                bugList
                             )
                         )
                     )
@@ -29141,6 +29117,9 @@ var dispatchToProps = function dispatchToProps(dispatch) {
         },
         bugCreated: function bugCreated(bug) {
             return dispatch(_actions2.default.bugCreated(bug));
+        },
+        bugsReceived: function bugsReceived(bugs) {
+            return dispatch(_actions2.default.bugsReceived(bugs));
         }
     };
 };

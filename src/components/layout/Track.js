@@ -1,4 +1,5 @@
                 // <Nav transparent="no" />
+                // <li key={bug._id}>{bug.title}</li>
 import React, { Component } from 'react'
 import { APIManager } from '../../utils' 
 import { Nav } from '../containers'
@@ -56,6 +57,7 @@ class Track extends Component {
             }
 
             console.log(JSON.stringify(response.results))
+            this.props.bugsReceived(response.results)
 
         })
     }
@@ -93,10 +95,17 @@ class Track extends Component {
     }
 
 	render(){
+        var bugList = this.props.bugs.map((bug, i) => {
+            return (
+                <a key={i} href="#" className="list-group-item">
+                        <h4 className="list-group-item-heading">{bug.title}</h4>
+                        <p className="list-group-item-text">{bug.detail}</p>
+                </a> 
+            )
+        })
+
 		return(
             <div>
-
-
                 <section id="content">
                     <div className="content-wrap">
                         <div className="container clearfix">
@@ -108,21 +117,8 @@ class Track extends Component {
                                 <textarea onChange={this.updateBug.bind(this)} placeholder="Response" id="response" className="form-control"></textarea><br /> 
                                 <button onClick={this.submitBug.bind(this)} className="btn btn-success">Record Bug</button><br />
                                 <hr style={{borderTop: '1px solid red #444'}} />
-
-                                <div className="list-group">
-                                    <a href="#" className="list-group-item">
-                                        <h4 className="list-group-item-heading">List group item heading</h4>
-                                        <p className="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.</p>
-                                    </a>
-                                    <a href="#" className="list-group-item">
-                                        <h4 className="list-group-item-heading">List group item heading</h4>
-                                        <p className="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.</p>
-                                    </a>
-                                    <a href="#" className="list-group-item">
-                                        <h4 className="list-group-item-heading">List group item heading</h4>
-                                        <p className="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, sit, reiciendis expedita voluptate fuga perferendis soluta doloribus quasi quia odio.</p>
-                                    </a>
-                                </div>
+                                {bugList}
+ 
                             </div>
                         </div>
                     </div>
@@ -146,7 +142,8 @@ const stateToProps = (state) => {
 const dispatchToProps = (dispatch) => {
     return {
         tracksReceived: (tracks) => dispatch(actions.tracksReceived(tracks)),
-        bugCreated: (bug) => dispatch(actions.bugCreated(bug))
+        bugCreated: (bug) => dispatch(actions.bugCreated(bug)),
+        bugsReceived: (bugs) => dispatch(actions.bugsReceived(bugs))
     }
 }
 
