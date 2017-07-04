@@ -76,9 +76,15 @@ class Track extends Component {
 
     submitBug(event){
         event.preventDefault()
+        if (this.props.currentUser == null) {
+            alert('Please log in to record new bug')
+            return
+        }
+
         var bug = Object.assign({}, this.state.bug)   // var bug = this.state.bug
         console.log(JSON.stringify(this.props.track._id))
         bug['track'] = this.props.track._id
+        bug['profile'] = this.props.currentUser.id
 
         APIManager.post('/api/bug', bug, (err, response) => {
             if (err) {
@@ -106,6 +112,7 @@ class Track extends Component {
 
 		return(
             <div>
+
                 <section id="content">
                     <div className="content-wrap">
                         <div className="container clearfix">
@@ -135,7 +142,8 @@ const stateToProps = (state) => {
 
     return {
         track: (tracksArray.length == 0) ? {name:''} : tracksArray[0],
-        bugs: state.bug.list
+        bugs: state.bug.list,
+        currentUser: state.account.currentUser
     }
 }
 
@@ -143,7 +151,9 @@ const dispatchToProps = (dispatch) => {
     return {
         tracksReceived: (tracks) => dispatch(actions.tracksReceived(tracks)),
         bugCreated: (bug) => dispatch(actions.bugCreated(bug)),
-        bugsReceived: (bugs) => dispatch(actions.bugsReceived(bugs))
+        bugsReceived: (bugs) => dispatch(actions.bugsReceived(bugs)),
+        // currentUserReceived: (profile) => dispatch(actions.currentUserReceived(profile))
+        // currentUserReceived: (profile) => dispatch(actions.currentUserReceived(profile))    
     }
 }
 

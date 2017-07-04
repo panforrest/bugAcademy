@@ -109,9 +109,15 @@ var Track = (function (Component) {
             value: function submitBug(event) {
                 var _this = this;
                 event.preventDefault();
+                if (this.props.currentUser == null) {
+                    alert("Please log in to record new bug");
+                    return;
+                }
+
                 var bug = Object.assign({}, this.state.bug); // var bug = this.state.bug
                 console.log(JSON.stringify(this.props.track._id));
                 bug.track = this.props.track._id;
+                bug.profile = this.props.currentUser.id;
 
                 APIManager.post("/api/bug", bug, function (err, response) {
                     if (err) {
@@ -200,7 +206,8 @@ var stateToProps = function (state) {
 
     return {
         track: tracksArray.length == 0 ? { name: "" } : tracksArray[0],
-        bugs: state.bug.list
+        bugs: state.bug.list,
+        currentUser: state.account.currentUser
     };
 };
 
@@ -214,8 +221,9 @@ var dispatchToProps = function (dispatch) {
         },
         bugsReceived: function (bugs) {
             return dispatch(actions.bugsReceived(bugs));
-        }
-    };
+        } };
 };
 
 module.exports = connect(stateToProps, dispatchToProps)(Track);
+// currentUserReceived: (profile) => dispatch(actions.currentUserReceived(profile))
+// currentUserReceived: (profile) => dispatch(actions.currentUserReceived(profile))
