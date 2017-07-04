@@ -29,6 +29,11 @@ var Track = (function (Component) {
         this.state = {
             track: {
                 name: ""
+            },
+            bug: {
+                title: "",
+                detail: "",
+                response: ""
             }
         };
     }
@@ -38,7 +43,8 @@ var Track = (function (Component) {
     _prototypeProperties(Track, null, {
         componentDidMount: {
             value: function componentDidMount() {
-                var _this = this;
+                var _this2 = this;
+                var _this = this; //var this = _this
                 // console.log('Track.js layout componentDidMount: ')
                 // APIManager.get('/api/track/'+this.props.slug, null, (err, response) => {
                 APIManager.get("/api/track?slug=" + this.props.slug, null, function (err, response) {
@@ -52,8 +58,68 @@ var Track = (function (Component) {
                     // this.setState({
                     // 	track: track
                     // })
-                    _this.props.tracksReceived(tracks);
+                    _this2.props.tracksReceived(tracks);
+                    _this.fetchPosts();
                 });
+            },
+            writable: true,
+            configurable: true
+        },
+        fetchPosts: {
+            value: function fetchPosts() {
+                console.log("fetchPosts: ");
+                console.log(JSON.stringify(this.props.track._id));
+                if (this.props.track._id == null) {
+                    return;
+                }
+
+                var id = this.props.track._id;
+                APIManager.get("/api/bug?track=" + id, null, function (err, response) {
+                    if (err) {
+                        var msg = err.message || err;
+                        alert(msg);
+                        return;
+                    }
+
+                    console.log(JSON.stringify(response.results));
+                });
+            },
+            writable: true,
+            configurable: true
+        },
+        updateBug: {
+            value: function updateBug(event) {
+                event.preventDefault();
+                console.log(event.target.id + " == " + event.target.value);
+                var updatedBug = Object.assign({}, this.state.bug);
+                updatedBug[event.target.id] = event.target.value;
+                var bug = updatedBug;
+                this.setState({
+                    bug: bug
+                });
+                console.log("updatedBug: " + JSON.stringify(this.state.bug));
+            },
+            writable: true,
+            configurable: true
+        },
+        submitBug: {
+            value: function submitBug(event) {
+                var _this = this;
+                event.preventDefault();
+                var bug = Object.assign({}, this.state.bug); // var bug = this.state.bug
+                console.log(JSON.stringify(this.props.track._id));
+                bug.track = this.props.track._id;
+
+                APIManager.post("/api/bug", bug, function (err, response) {
+                    if (err) {
+                        var msg = err.message || err;
+                        alert(msg);
+                        return;
+                    }
+                    _this.props.bugCreated(response.result);
+                    console.log("submitBug: " + JSON.stringify(response.result));
+                });
+
             },
             writable: true,
             configurable: true
@@ -80,14 +146,16 @@ var Track = (function (Component) {
                                         null,
                                         this.props.track.name
                                     ),
-                                    React.createElement("input", { placeholder: "Post Title", className: "form-control", type: "text" }),
+                                    React.createElement("input", { onChange: this.updateBug.bind(this), placeholder: "Bug Title", id: "title", className: "form-control", type: "text" }),
                                     React.createElement("br", null),
-                                    React.createElement("textarea", { placeholder: "Post Text", className: "form-control" }),
+                                    React.createElement("textarea", { onChange: this.updateBug.bind(this), placeholder: "Bug Detail", id: "detail", className: "form-control" }),
+                                    React.createElement("br", null),
+                                    React.createElement("textarea", { onChange: this.updateBug.bind(this), placeholder: "Response", id: "response", className: "form-control" }),
                                     React.createElement("br", null),
                                     React.createElement(
                                         "button",
-                                        { className: "btn btn-success" },
-                                        "Add Bug"
+                                        { onClick: this.submitBug.bind(this), className: "btn btn-success" },
+                                        "Record Bug"
                                     ),
                                     React.createElement("br", null),
                                     React.createElement("hr", { style: { borderTop: "1px solid red #444" } }),
@@ -156,7 +224,8 @@ var stateToProps = function (state) {
     var tracksArray = state.track.list;
 
     return {
-        track: tracksArray.length == 0 ? { name: "" } : tracksArray[0]
+        track: tracksArray.length == 0 ? { name: "" } : tracksArray[0],
+        bugs: state.bug.list
     };
 };
 
@@ -164,6 +233,9 @@ var dispatchToProps = function (dispatch) {
     return {
         tracksReceived: function (tracks) {
             return dispatch(actions.tracksReceived(tracks));
+        },
+        bugCreated: function (bug) {
+            return dispatch(actions.bugCreated(bug));
         }
     };
 };

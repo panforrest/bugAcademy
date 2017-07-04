@@ -15,9 +15,11 @@ export default (state=initialState, action) => {
             return updated
 
         case constants.BUG_CREATED:
+
             var updatedList = Object.assign([], updated.list) 
             updatedList.push(action.bug)   
             updated['list'] = updatedList
+            console.log('BUG_CREATED: '+JSON.stringify(updated['list']))
             return updated
 
     	default:
