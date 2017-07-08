@@ -53,5 +53,19 @@ module.exports = {
             type: constants.TRACK_CREATED,
             track: track
         };
+    },
+
+    solutionsReceived: function (solutions) {
+        return {
+            type: constants.SOLUTIONS_RECEIVED,
+            solutions: solutions
+        };
+    },
+
+    solutionCreated: function (solution) {
+        return {
+            type: constants.SOLUTION_CREATED,
+            solution: solution
+        };
     }
 };

@@ -1,16 +1,23 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <h1>Create Solution</h1>
+    <form action="/api/solution" method="post">
+      <input type="text" name="bug" placeholder="Bug" /> <br / >
+      <input type="text" name="profile" placeholder="Profile" /> <br />
+      <input type="text" name="text" placeholder="Solution Text" /><br />
+      <input type="submit" value="Submit">
+    </form>
+    <br />
     <h1>Create Bug</h1>
     <form action="/api/bug" method="post">
-    	<input type="text" name="title" placeholder="Title" /> <br / >
-    	<input type="text" name="description" placeholder="Description" /> <br />
-    	<input type="text" name="solution" placeholder="Solution" /><br />
-    	<input type="submit" value="Submit">
+      <input type="text" name="title" placeholder="Title" /> <br / >
+      <input type="text" name="description" placeholder="Description" /> <br />
+      <input type="text" name="solution" placeholder="Solution" /><br />
+      <input type="submit" value="Submit">
     </form>
     <br />
     <h1>Create Profile</h1>

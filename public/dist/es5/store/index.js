@@ -8,6 +8,7 @@ var profileReducer = _reducers.profileReducer;
 var accountReducer = _reducers.accountReducer;
 var bugReducer = _reducers.bugReducer;
 var trackReducer = _reducers.trackReducer;
+var solutionReducer = _reducers.solutionReducer;
 var _redux = require("redux");
 
 var applyMiddleware = _redux.applyMiddleware;
@@ -52,7 +53,8 @@ var reducers = combineReducers({
 	profile: profileReducer,
 	account: accountReducer,
 	bug: bugReducer,
-	track: trackReducer
+	track: trackReducer,
+	solution: solutionReducer
 });
 
 var store = createStore(reducers, applyMiddleware(thunk));

@@ -50,6 +50,7 @@ class Tracks extends Component {
                     </div>    
                 </div>
                 <Admin />
+
             </div>    
         )    
 	}

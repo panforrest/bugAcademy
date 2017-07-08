@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Tracks from './Tracks'
 import Nav from './Nav'
 import Footer from './Footer'
-import { Track, Register, Account } from '../layout/'
+import { Track, Register, Account, Bug } from '../layout/'
 // import Register from './Register'
 
 class Main extends Component {
@@ -29,6 +29,9 @@ class Main extends Component {
 
         if (page == 'account')
             content = <Account />
+
+        if (page == 'bug')
+            content = <Bug slug={this.props.slug}/>
 
 		return(
 			<div>

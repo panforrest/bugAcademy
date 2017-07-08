@@ -18,7 +18,7 @@ var React = _interopRequire(_react);
 
 var Component = _react.Component;
 var APIManager = require("../../utils").APIManager;
-var Nav = require("../containers").Nav;
+// import { Nav } from '../containers'
 var actions = _interopRequire(require("../../actions"));
 
 var connect = require("react-redux").connect;
@@ -34,7 +34,8 @@ var Track = (function (Component) {
             bug: {
                 title: "",
                 detail: "",
-                response: ""
+                response: "",
+                slug: ""
             }
         };
     }
@@ -45,6 +46,7 @@ var Track = (function (Component) {
         componentDidMount: {
             value: function componentDidMount() {
                 var _this2 = this;
+                console.log("layout/Track.js componentDidMount: this.props.slug=" + this.props.slug);
                 var _this = this; //var this = _this
                 // console.log('Track.js layout componentDidMount: ')
                 // APIManager.get('/api/track/'+this.props.slug, null, (err, response) => {
@@ -60,16 +62,16 @@ var Track = (function (Component) {
                     // 	track: track
                     // })
                     _this2.props.tracksReceived(tracks);
-                    _this.fetchPosts();
+                    _this.fetchBugs();
                 });
             },
             writable: true,
             configurable: true
         },
-        fetchPosts: {
-            value: function fetchPosts() {
+        fetchBugs: {
+            value: function fetchBugs() {
                 var _this = this;
-                console.log("fetchPosts: ");
+                console.log("fetchBugs: ");
                 console.log(JSON.stringify(this.props.track._id));
                 if (this.props.track._id == null) {
                     return;
@@ -114,6 +116,24 @@ var Track = (function (Component) {
                     return;
                 }
 
+
+                console.log("to submitBug: " + JSON.stringify(this.state.bug));
+                var bug = this.state.bug;
+                var title = bug.title;
+                var parts = title.split(" ");
+
+                var slug = "";
+                for (var i = 0; i < parts.length; i++) {
+                    var word = parts[i];
+                    slug += word;
+                    if (i != parts.length - 1) slug += "-";
+                }
+
+                slug = slug.replace("?", "-");
+                bug.slug = slug;
+                console.log(JSON.stringify(bug));
+
+
                 var bug = Object.assign({}, this.state.bug); // var bug = this.state.bug
                 console.log(JSON.stringify(this.props.track._id));
                 bug.track = this.props.track._id;
@@ -142,7 +162,11 @@ var Track = (function (Component) {
                         React.createElement(
                             "h4",
                             { className: "list-group-item-heading" },
-                            bug.title
+                            React.createElement(
+                                "a",
+                                { href: "/bug/" + bug.slug },
+                                bug.title
+                            )
                         ),
                         React.createElement(
                             "p",

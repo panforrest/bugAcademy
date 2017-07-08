@@ -48,5 +48,19 @@ export default {
             type: constants.TRACK_CREATED,
             track: track
         }
+    },
+
+    solutionsReceived: (solutions) => {
+        return {
+            type: constants.SOLUTIONS_RECEIVED,
+            solutions: solutions
+        }
+    },
+
+    solutionCreated: (solution) => {
+        return {
+            type: constants.SOLUTION_CREATED,
+            solution: solution
+        }
     }
 }
