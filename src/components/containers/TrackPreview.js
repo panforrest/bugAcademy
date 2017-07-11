@@ -1,5 +1,13 @@
                         // <li><a href="#"><i className="icon-time"></i> {this.props.track.address} </a></li>
                         // <li><a href="#"><i className="icon-map-marker2"></i> {this.props.track.city} </a></li>
+                    // <ul className="entry-meta clearfix">
+                    //     <li><span className="label label-warning">Private</span></li>
+
+                    // </ul>
+                    // <div className="entry-content">
+                    //     <a href={'/track/'+this.props.track.slug} className="btn  btn-danger">Visit</a>
+                    // </div>
+
 import React, { Component } from 'react'
 
 class TrackPreview extends Component {
@@ -18,14 +26,9 @@ class TrackPreview extends Component {
                             <a href={'/track/'+this.props.track.slug}>{this.props.track.name}</a>
                         </h2>
                     </div>
-                    <ul className="entry-meta clearfix">
-                        <li><span className="label label-warning">Private</span></li>
 
-                    </ul>
                     <hr style={{borderTop:'1px solid #ddd'}} />
-                    <div className="entry-content">
-                        <a href={'/track/'+this.props.track.slug} className="btn  btn-danger">Visit</a>
-                    </div>
+
                 </div>
             </div>
 

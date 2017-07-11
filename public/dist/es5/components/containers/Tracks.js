@@ -12,6 +12,20 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 // <li key={i}>{this.props.track.name}</li>
 // <li key={track._id}><a href={'/track/'+track.slug}>{track.name}</a></li>
+
+// <div className="container clearifx">
+//           <div className="col_three_fifth bothsidebar nobottommargin">
+//               <div className="fancy-title title-border">
+//                   <h3>Tracks</h3>
+//               </div>
+
+//               <div id="posts" className="events small-thumbs">
+//                   {trackList}
+//               </div>   
+//           </div>
+//           <Admin />
+
+//       </div> 
 var _react = require("react");
 
 var React = _interopRequire(_react);
@@ -68,26 +82,30 @@ var Tracks = (function (Component) {
 
 				return React.createElement(
 					"div",
-					{ className: "container clearifx" },
+					null,
 					React.createElement(
 						"div",
-						{ className: "col_three_fifth bothsidebar nobottommargin" },
+						{ className: "container clearifx" },
 						React.createElement(
 							"div",
-							{ className: "fancy-title title-border" },
+							{ className: "col_three_fifth bothsidebar nobottommargin" },
 							React.createElement(
-								"h3",
-								null,
-								"Tracks"
+								"div",
+								{ className: "fancy-title title-border" },
+								React.createElement(
+									"h3",
+									null,
+									"Tracks"
+								)
+							),
+							React.createElement(
+								"div",
+								{ id: "posts", className: "events small-thumbs" },
+								trackList
 							)
 						),
-						React.createElement(
-							"div",
-							{ id: "posts", className: "events small-thumbs" },
-							trackList
-						)
-					),
-					React.createElement(Admin, null)
+						React.createElement(Admin, null)
+					)
 				);
 			},
 			writable: true,

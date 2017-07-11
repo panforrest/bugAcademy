@@ -1,5 +1,19 @@
 // <li key={i}>{this.props.track.name}</li>
                 // <li key={track._id}><a href={'/track/'+track.slug}>{track.name}</a></li>
+
+    		// <div className="container clearifx">
+      //           <div className="col_three_fifth bothsidebar nobottommargin">
+      //               <div className="fancy-title title-border">
+      //                   <h3>Tracks</h3>
+      //               </div>
+
+      //               <div id="posts" className="events small-thumbs">
+      //                   {trackList}
+      //               </div>    
+      //           </div>
+      //           <Admin />
+
+      //       </div>  
 import React, { Component } from 'react'
 import { APIManager } from '../../utils'
 import actions from '../../actions'
@@ -39,19 +53,27 @@ class Tracks extends Component {
         })
 
     	return(
-    		<div className="container clearifx">
-                <div className="col_three_fifth bothsidebar nobottommargin">
-                    <div className="fancy-title title-border">
-                        <h3>Tracks</h3>
-                    </div>
+            <div>
 
-                    <div id="posts" className="events small-thumbs">
-                        {trackList}
-                    </div>    
-                </div>
-                <Admin />
+	    		<div className="container clearifx">
+	                <div className="col_three_fifth bothsidebar nobottommargin">
+	                    <div className="fancy-title title-border">
+	                        <h3>Tracks</h3>
+	                    </div>
 
-            </div>    
+	                    <div id="posts" className="events small-thumbs">
+	                        {trackList}
+	                    </div>    
+	                </div>
+	                <Admin />
+
+	            </div> 
+
+            </div>
+
+
+
+  
         )    
 	}
 }

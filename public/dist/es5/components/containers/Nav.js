@@ -9,6 +9,12 @@ var _inherits = function (subClass, superClass) { if (typeof superClass !== "fun
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 // <li><a href="/"><div>{this.props.currentUser.email}</div></a></li>
+// <a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png">
+//     <img src="/images/logo.png" alt="Canvas Logo" />
+// </a>
+// <a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png">
+//     <img src="/images/logo@2x.png" alt="Canvas Logo" />
+// </a>
 var _react = require("react");
 
 var React = _interopRequire(_react);
@@ -66,20 +72,7 @@ var Nav = (function (Component) {
 								{ id: "primary-menu-trigger" },
 								React.createElement("i", { className: "icon-reorder" })
 							),
-							React.createElement(
-								"div",
-								{ id: "logo" },
-								React.createElement(
-									"a",
-									{ href: "/", className: "standard-logo", "data-dark-logo": "/images/logo-dark.png" },
-									React.createElement("img", { src: "/images/logo.png", alt: "Canvas Logo" })
-								),
-								React.createElement(
-									"a",
-									{ href: "/", className: "retina-logo", "data-dark-logo": "/images/logo-dark@2x.png" },
-									React.createElement("img", { src: "/images/logo@2x.png", alt: "Canvas Logo" })
-								)
-							),
+							React.createElement("div", { id: "logo" }),
 							React.createElement(
 								"nav",
 								{ id: "primary-menu" },
@@ -108,7 +101,7 @@ var Nav = (function (Component) {
 											React.createElement(
 												"div",
 												null,
-												"Register"
+												"Signup/Login"
 											)
 										)
 									),

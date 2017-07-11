@@ -66,6 +66,12 @@ class Bug extends Component {
 
     submitSolution(event){
         event.preventDefault()
+        if (this.props.currentUser == null) {
+            alert('Please log in to add new solution!')
+            return
+        }
+
+
         var solution = Object.assign({}, this.state.solution)
         solution['bug'] = this.props.bug.id
         solution['profile'] = this.props.currentUser.id
@@ -97,12 +103,26 @@ class Bug extends Component {
 
         return(
             <div>
-                <h3>Your Response</h3>
-                <input onChange={this.updateSolution.bind(this)} type='text' id='text' placeholder='Solution Text' />
-                <br />
-                <button onClick={this.submitSolution.bind(this)}>Submit Solution</button><br />
-                <br />
-                {solutionList}
+
+                <section id="content">
+                    <div className="content-wrap">
+                        <div className="container clearfix">
+                            <div className="postcontent nobottommargin clearfix">
+
+                                <h3>Add Your Solution</h3>
+                                <textarea onChange={this.updateSolution.bind(this)} className="form-control" type='text' id='text' placeholder='Provide Your Solution or Contribute Your Response' />
+                                <br />
+                                <button onClick={this.submitSolution.bind(this)}>Submit</button><br />
+                                <br />
+                                <hr style={{borderTop: '1px solid red #444'}} />                            
+                                {solutionList}
+
+                            </div>
+                        </div>
+                    </div>
+                </section>                            
+
+
             </div>
         ) 
     }

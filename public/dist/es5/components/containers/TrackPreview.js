@@ -10,6 +10,14 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 // <li><a href="#"><i className="icon-time"></i> {this.props.track.address} </a></li>
 // <li><a href="#"><i className="icon-map-marker2"></i> {this.props.track.city} </a></li>
+// <ul className="entry-meta clearfix">
+//     <li><span className="label label-warning">Private</span></li>
+
+// </ul>
+// <div className="entry-content">
+//     <a href={'/track/'+this.props.track.slug} className="btn  btn-danger">Visit</a>
+// </div>
+
 var _react = require("react");
 
 var React = _interopRequire(_react);
@@ -57,29 +65,7 @@ var TrackPreview = (function (Component) {
                                 )
                             )
                         ),
-                        React.createElement(
-                            "ul",
-                            { className: "entry-meta clearfix" },
-                            React.createElement(
-                                "li",
-                                null,
-                                React.createElement(
-                                    "span",
-                                    { className: "label label-warning" },
-                                    "Private"
-                                )
-                            )
-                        ),
-                        React.createElement("hr", { style: { borderTop: "1px solid #ddd" } }),
-                        React.createElement(
-                            "div",
-                            { className: "entry-content" },
-                            React.createElement(
-                                "a",
-                                { href: "/track/" + this.props.track.slug, className: "btn  btn-danger" },
-                                "Visit"
-                            )
-                        )
+                        React.createElement("hr", { style: { borderTop: "1px solid #ddd" } })
                     )
                 );
             },

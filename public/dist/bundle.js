@@ -11962,6 +11962,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <li><a href="/"><div>{this.props.currentUser.email}</div></a></li>
+// <a href="/" className="standard-logo" data-dark-logo="/images/logo-dark.png">
+//     <img src="/images/logo.png" alt="Canvas Logo" />
+// </a>
+// <a href="/" className="retina-logo" data-dark-logo="/images/logo-dark@2x.png">
+//     <img src="/images/logo@2x.png" alt="Canvas Logo" />
+// </a>
 
 
 var Nav = function (_Component) {
@@ -12009,20 +12015,7 @@ var Nav = function (_Component) {
 							{ id: 'primary-menu-trigger' },
 							_react2.default.createElement('i', { className: 'icon-reorder' })
 						),
-						_react2.default.createElement(
-							'div',
-							{ id: 'logo' },
-							_react2.default.createElement(
-								'a',
-								{ href: '/', className: 'standard-logo', 'data-dark-logo': '/images/logo-dark.png' },
-								_react2.default.createElement('img', { src: '/images/logo.png', alt: 'Canvas Logo' })
-							),
-							_react2.default.createElement(
-								'a',
-								{ href: '/', className: 'retina-logo', 'data-dark-logo': '/images/logo-dark@2x.png' },
-								_react2.default.createElement('img', { src: '/images/logo@2x.png', alt: 'Canvas Logo' })
-							)
-						),
+						_react2.default.createElement('div', { id: 'logo' }),
 						_react2.default.createElement(
 							'nav',
 							{ id: 'primary-menu' },
@@ -12051,7 +12044,7 @@ var Nav = function (_Component) {
 										_react2.default.createElement(
 											'div',
 											null,
-											'Register'
+											'Signup/Login'
 										)
 									)
 								),
@@ -12137,6 +12130,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <li key={i}>{this.props.track.name}</li>
 // <li key={track._id}><a href={'/track/'+track.slug}>{track.name}</a></li>
 
+// <div className="container clearifx">
+//           <div className="col_three_fifth bothsidebar nobottommargin">
+//               <div className="fancy-title title-border">
+//                   <h3>Tracks</h3>
+//               </div>
+
+//               <div id="posts" className="events small-thumbs">
+//                   {trackList}
+//               </div>    
+//           </div>
+//           <Admin />
+
+//       </div>  
+
 
 var Tracks = function (_Component) {
 	_inherits(Tracks, _Component);
@@ -12182,26 +12189,30 @@ var Tracks = function (_Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'container clearifx' },
+				null,
 				_react2.default.createElement(
 					'div',
-					{ className: 'col_three_fifth bothsidebar nobottommargin' },
+					{ className: 'container clearifx' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'fancy-title title-border' },
+						{ className: 'col_three_fifth bothsidebar nobottommargin' },
 						_react2.default.createElement(
-							'h3',
-							null,
-							'Tracks'
+							'div',
+							{ className: 'fancy-title title-border' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Tracks'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ id: 'posts', className: 'events small-thumbs' },
+							trackList
 						)
 					),
-					_react2.default.createElement(
-						'div',
-						{ id: 'posts', className: 'events small-thumbs' },
-						trackList
-					)
-				),
-				_react2.default.createElement(_Admin2.default, null)
+					_react2.default.createElement(_Admin2.default, null)
+				)
 			);
 		}
 	}]);
@@ -28578,7 +28589,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <li><a href="#"><i className="icon-time"></i> {this.props.track.address} </a></li>
 // <li><a href="#"><i className="icon-map-marker2"></i> {this.props.track.city} </a></li>
+// <ul className="entry-meta clearfix">
+//     <li><span className="label label-warning">Private</span></li>
 
+// </ul>
+// <div className="entry-content">
+//     <a href={'/track/'+this.props.track.slug} className="btn  btn-danger">Visit</a>
+// </div>
 
 var TrackPreview = function (_Component) {
     _inherits(TrackPreview, _Component);
@@ -28620,29 +28637,7 @@ var TrackPreview = function (_Component) {
                             )
                         )
                     ),
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "entry-meta clearfix" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "span",
-                                { className: "label label-warning" },
-                                "Private"
-                            )
-                        )
-                    ),
-                    _react2.default.createElement("hr", { style: { borderTop: '1px solid #ddd' } }),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "entry-content" },
-                        _react2.default.createElement(
-                            "a",
-                            { href: '/track/' + this.props.track.slug, className: "btn  btn-danger" },
-                            "Visit"
-                        )
-                    )
+                    _react2.default.createElement("hr", { style: { borderTop: '1px solid #ddd' } })
                 )
             );
         }
@@ -28901,6 +28896,11 @@ var Bug = function (_Component) {
             var _this5 = this;
 
             event.preventDefault();
+            if (this.props.currentUser == null) {
+                alert('Please log in to add new solution!');
+                return;
+            }
+
             var solution = Object.assign({}, this.state.solution);
             solution['bug'] = this.props.bug.id;
             solution['profile'] = this.props.currentUser.id;
@@ -28945,20 +28945,37 @@ var Bug = function (_Component) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    'h3',
-                    null,
-                    'Your Response'
-                ),
-                _react2.default.createElement('input', { onChange: this.updateSolution.bind(this), type: 'text', id: 'text', placeholder: 'Solution Text' }),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                    'button',
-                    { onClick: this.submitSolution.bind(this) },
-                    'Submit Solution'
-                ),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                solutionList
+                    'section',
+                    { id: 'content' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'content-wrap' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'container clearfix' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'postcontent nobottommargin clearfix' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    null,
+                                    'Add Your Solution'
+                                ),
+                                _react2.default.createElement('textarea', { onChange: this.updateSolution.bind(this), className: 'form-control', type: 'text', id: 'text', placeholder: 'Provide Your Solution or Contribute Your Response' }),
+                                _react2.default.createElement('br', null),
+                                _react2.default.createElement(
+                                    'button',
+                                    { onClick: this.submitSolution.bind(this) },
+                                    'Submit'
+                                ),
+                                _react2.default.createElement('br', null),
+                                _react2.default.createElement('br', null),
+                                _react2.default.createElement('hr', { style: { borderTop: '1px solid red #444' } }),
+                                solutionList
+                            )
+                        )
+                    )
+                )
             );
         }
     }]);

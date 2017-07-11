@@ -95,6 +95,12 @@ var Bug = (function (Component) {
             value: function submitSolution(event) {
                 var _this = this;
                 event.preventDefault();
+                if (this.props.currentUser == null) {
+                    alert("Please log in to add new solution!");
+                    return;
+                }
+
+
                 var solution = Object.assign({}, this.state.solution);
                 solution.bug = this.props.bug.id;
                 solution.profile = this.props.currentUser.id;
@@ -140,20 +146,37 @@ var Bug = (function (Component) {
                     "div",
                     null,
                     React.createElement(
-                        "h3",
-                        null,
-                        "Your Response"
-                    ),
-                    React.createElement("input", { onChange: this.updateSolution.bind(this), type: "text", id: "text", placeholder: "Solution Text" }),
-                    React.createElement("br", null),
-                    React.createElement(
-                        "button",
-                        { onClick: this.submitSolution.bind(this) },
-                        "Submit Solution"
-                    ),
-                    React.createElement("br", null),
-                    React.createElement("br", null),
-                    solutionList
+                        "section",
+                        { id: "content" },
+                        React.createElement(
+                            "div",
+                            { className: "content-wrap" },
+                            React.createElement(
+                                "div",
+                                { className: "container clearfix" },
+                                React.createElement(
+                                    "div",
+                                    { className: "postcontent nobottommargin clearfix" },
+                                    React.createElement(
+                                        "h3",
+                                        null,
+                                        "Add Your Solution"
+                                    ),
+                                    React.createElement("textarea", { onChange: this.updateSolution.bind(this), className: "form-control", type: "text", id: "text", placeholder: "Provide Your Solution or Contribute Your Response" }),
+                                    React.createElement("br", null),
+                                    React.createElement(
+                                        "button",
+                                        { onClick: this.submitSolution.bind(this) },
+                                        "Submit"
+                                    ),
+                                    React.createElement("br", null),
+                                    React.createElement("br", null),
+                                    React.createElement("hr", { style: { borderTop: "1px solid red #444" } }),
+                                    solutionList
+                                )
+                            )
+                        )
+                    )
                 );
             },
             writable: true,
