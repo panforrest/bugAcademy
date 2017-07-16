@@ -11709,7 +11709,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <h2>User is not logged in. </h2>
 // export default connect(stateToProps, dispatchToProps)(Admin)
-
+// <h3>Record A New Bug</h3>
+// <input onChange={this.updateBug.bind(this)} type="text" id="title" placeholder="Title" /><br />
+// <textarea onChange={this.updateBug.bind(this)} type="text" id="detail" placeholder="Detail" /><br />
+// <textarea onChange={this.updateBug.bind(this)} type="text" id="response" placeholder="Response" /><br />
+// <input onClick={this.submitBug.bind(this)} type="submit" value="Submit" />
 
 var Admin = function (_Component) {
     _inherits(Admin, _Component);
@@ -11857,6 +11861,7 @@ var Admin = function (_Component) {
 
                 console.log('track submitted: ' + JSON.stringify(response.result));
                 _this6.props.trackCreated(response.result);
+                window.location.href = '/track/' + track['slug'];
             });
         }
     }, {
@@ -11877,19 +11882,7 @@ var Admin = function (_Component) {
                     _react2.default.createElement(
                         'h3',
                         null,
-                        'Create Bug'
-                    ),
-                    _react2.default.createElement('input', { onChange: this.updateBug.bind(this), type: 'text', id: 'title', placeholder: 'Title' }),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement('textarea', { onChange: this.updateBug.bind(this), type: 'text', id: 'detail', placeholder: 'Detail' }),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement('textarea', { onChange: this.updateBug.bind(this), type: 'text', id: 'response', placeholder: 'Response' }),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement('input', { onClick: this.submitBug.bind(this), type: 'submit', value: 'Submit' }),
-                    _react2.default.createElement(
-                        'h3',
-                        null,
-                        'Create Track'
+                        'Start A New Track'
                     ),
                     _react2.default.createElement('input', { onChange: this.updateTrack.bind(this), type: 'text', id: 'name', placeholder: 'Track Name' }),
                     _react2.default.createElement('br', null),
@@ -28961,7 +28954,7 @@ var Bug = function (_Component) {
                                     null,
                                     'Add Your Solution'
                                 ),
-                                _react2.default.createElement('textarea', { onChange: this.updateSolution.bind(this), className: 'form-control', type: 'text', id: 'text', placeholder: 'Provide Your Solution or Contribute Your Response' }),
+                                _react2.default.createElement('textarea', { onChange: this.updateSolution.bind(this), className: 'form-control', type: 'text', id: 'text', placeholder: 'Provide Your Solution or Contribute Your Response to or Experience with this bug ' }),
                                 _react2.default.createElement('br', null),
                                 _react2.default.createElement(
                                     'button',
@@ -29110,21 +29103,36 @@ var Register = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                this.props.currentUser != null ? _react2.default.createElement(
-                    'h2',
-                    null,
-                    ' Welcome, ',
-                    this.props.currentUser.email,
-                    ' ',
-                    this.props.currentUser.firstName,
-                    ' ',
-                    this.props.currentUser.lastName,
-                    ' '
-                ) : _react2.default.createElement(
-                    'div',
-                    null,
-                    'This is Register container.',
-                    _react2.default.createElement(_presentation.Signup, { onRegister: this.register.bind(this), onLogin: this.login.bind(this) })
+                _react2.default.createElement(
+                    'section',
+                    { id: 'content' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'content-wrap' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'container clearfix' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'postcontent nobottommargin clearfix' },
+                                this.props.currentUser != null ? _react2.default.createElement(
+                                    'h2',
+                                    null,
+                                    ' Welcome, ',
+                                    this.props.currentUser.email,
+                                    ' ',
+                                    this.props.currentUser.firstName,
+                                    ' ',
+                                    this.props.currentUser.lastName,
+                                    ' '
+                                ) : _react2.default.createElement(
+                                    'div',
+                                    null,
+                                    _react2.default.createElement(_presentation.Signup, { onRegister: this.register.bind(this), onLogin: this.login.bind(this) })
+                                )
+                            )
+                        )
+                    )
                 )
             );
         }
@@ -29190,6 +29198,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // <Nav transparent="no" />
 // <li key={bug._id}>{bug.title}</li>
+// <textarea onChange={this.updateBug.bind(this)} placeholder="Response" id="response" className="form-control"></textarea><br /> 
 
 // import { Nav } from '../containers'
 
@@ -29316,6 +29325,7 @@ var Track = function (_Component) {
                 }
                 _this5.props.bugCreated(response.result);
                 console.log('submitBug: ' + JSON.stringify(response.result));
+                window.location.href = '/bug/' + bug['slug'];
             });
         }
     }, {
@@ -29365,8 +29375,6 @@ var Track = function (_Component) {
                                 _react2.default.createElement('input', { onChange: this.updateBug.bind(this), placeholder: 'Bug Title', id: 'title', className: 'form-control', type: 'text' }),
                                 _react2.default.createElement('br', null),
                                 _react2.default.createElement('textarea', { onChange: this.updateBug.bind(this), placeholder: 'Bug Detail', id: 'detail', className: 'form-control' }),
-                                _react2.default.createElement('br', null),
-                                _react2.default.createElement('textarea', { onChange: this.updateBug.bind(this), placeholder: 'Response', id: 'response', className: 'form-control' }),
                                 _react2.default.createElement('br', null),
                                 _react2.default.createElement(
                                     'button',

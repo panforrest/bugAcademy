@@ -12,6 +12,7 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 // <Nav transparent="no" />
 // <li key={bug._id}>{bug.title}</li>
+// <textarea onChange={this.updateBug.bind(this)} placeholder="Response" id="response" className="form-control"></textarea><br />
 var _react = require("react");
 
 var React = _interopRequire(_react);
@@ -147,6 +148,7 @@ var Track = (function (Component) {
                     }
                     _this.props.bugCreated(response.result);
                     console.log("submitBug: " + JSON.stringify(response.result));
+                    window.location.href = "/bug/" + bug.slug;
                 });
 
             },
@@ -199,8 +201,6 @@ var Track = (function (Component) {
                                     React.createElement("input", { onChange: this.updateBug.bind(this), placeholder: "Bug Title", id: "title", className: "form-control", type: "text" }),
                                     React.createElement("br", null),
                                     React.createElement("textarea", { onChange: this.updateBug.bind(this), placeholder: "Bug Detail", id: "detail", className: "form-control" }),
-                                    React.createElement("br", null),
-                                    React.createElement("textarea", { onChange: this.updateBug.bind(this), placeholder: "Response", id: "response", className: "form-control" }),
                                     React.createElement("br", null),
                                     React.createElement(
                                         "button",

@@ -6,7 +6,7 @@ var BugSchema = new mongoose.Schema({
     title: {type:String, defualt:''},
     slug: {type:String, default:''},
     detail: {type:String, default:''},
-    response: {type:String, default:''},
+    // response: {type:String, default:''},
     timestamp: {type:String, default:Date.now}
 })
 
@@ -18,7 +18,7 @@ BugSchema.methods.summary = function(){
         title: this.title,
         slug: this.slug,
         detail: this.detail,
-        response: this.response,
+        // response: this.response,
         timestamp: this.timestamp
 	}
 

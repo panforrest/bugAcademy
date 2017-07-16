@@ -162,7 +162,7 @@ var Bug = (function (Component) {
                                         null,
                                         "Add Your Solution"
                                     ),
-                                    React.createElement("textarea", { onChange: this.updateSolution.bind(this), className: "form-control", type: "text", id: "text", placeholder: "Provide Your Solution or Contribute Your Response" }),
+                                    React.createElement("textarea", { onChange: this.updateSolution.bind(this), className: "form-control", type: "text", id: "text", placeholder: "Provide Your Solution or Contribute Your Response to or Experience with this bug " }),
                                     React.createElement("br", null),
                                     React.createElement(
                                         "button",

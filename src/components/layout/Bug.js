@@ -110,7 +110,7 @@ class Bug extends Component {
                             <div className="postcontent nobottommargin clearfix">
 
                                 <h3>Add Your Solution</h3>
-                                <textarea onChange={this.updateSolution.bind(this)} className="form-control" type='text' id='text' placeholder='Provide Your Solution or Contribute Your Response' />
+                                <textarea onChange={this.updateSolution.bind(this)} className="form-control" type='text' id='text' placeholder='Provide Your Solution or Contribute Your Response to or Experience with this bug ' />
                                 <br />
                                 <button onClick={this.submitSolution.bind(this)}>Submit</button><br />
                                 <br />
